@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+<!-- root element -->
 <surveys  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:noNamespaceSchemaLocation="../survey.xsd">
     <survey sid="1">
@@ -20,7 +21,7 @@
                     <answer>Vôbec nespokojný</answer>
                 </answers>
             </question>
-            <question qid="1" type="multiple">
+            <question qid="2" type="multiple">
                 <description>
                     Ktoré programovacie jazyky ovladáte?
                 </description>
@@ -40,7 +41,7 @@
             Tento dotazník má dopomôcť k skvaliteniu prednášok a cvičení predmetu PB138.
         </description>
         <questions>
-            <question qid="2" type="closed">
+            <question qid="1" type="closed">
                 <description>
                     Ako hodnotíte prednášky na predmete?
                 </description>

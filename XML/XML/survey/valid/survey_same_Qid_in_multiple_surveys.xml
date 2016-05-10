@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- root element -->
 <surveys  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:noNamespaceSchemaLocation="../survey.xsd">
     <survey sid="1">
@@ -62,38 +61,6 @@
                     <answer>10-12</answer>
                     <answer>6-9</answer>
                     <answer>2-5</answer>
-                    <answer>menej ako hodinu alebo vôbec</answer>
-                </answers>
-            </question>
-        </questions>
-    </survey>
-    <survey sid="3">
-        <title>Predmetová anketa predmetu PB138</title>
-        <description>
-            Tento dotazník má dopomôcť k skvaliteniu prednášok a cvičení predmetu PB138.
-        </description>
-        <questions>
-            <question qid="1" type="multiple">
-                <description>
-                    Ako hodnotíte prednášky na predmete?
-                </description>
-                <answers>
-                    <answer>Veľmi kvalitné</answer>
-                    <answer>Kvalitné</answer>
-                    <answer>Vylepšil by som ich</answer>
-                    <answer>Nekvalitné</answer>
-                    <answer>Úplne nekvalitné</answer>
-                </answers>
-            </question>
-            <question qid="2" type="multiple">
-                <description>
-                    Ako dlho ste týždenne strávili študovaním predmetu?
-                </description>
-                <answers>
-                    <answer>10 a viac hodín</answer>
-                    <answer>7-9</answer>
-                    <answer>4-6</answer>
-                    <answer>2-3</answer>
                     <answer>menej ako hodinu alebo vôbec</answer>
                 </answers>
             </question>
