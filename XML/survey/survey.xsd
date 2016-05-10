@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <!--/////////////////////// definition of simple elements ////////////////////////-->
+    <xsd:element name="description"     type="nonEmptyStringType"/>
+    <xsd:element name="title"           type="nonEmptyStringType"/>
+    <xsd:element name="answer"          type="nonEmptyStringType"/>
+
+    <!--/////////////////////// definition of attributes /////////////////////////////-->
+    <xsd:attribute name="sid"           type="xsd:nonNegativeInteger"/>
+    <xsd:attribute name="qid"           type="xsd:nonNegativeInteger"/>
+    <xsd:attribute name="type"          type="questionType"/>
+
+    <!--/////////////////////// definition of simple types ///////////////////////////-->
+    <xsd:simpleType name="nonEmptyStringType">
+        <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+
+    <xsd:simpleType name="questionType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="closed"/>
+            <xsd:enumeration value="multiple"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+
+    <!--/////////////////////// definition of complex elements ///////////////////////-->
+    <xsd:element name="questions">
+        <xsd:complexType>
+            <xsd:sequence minOccurs="1" maxOccurs="unbounded">
+                <xsd:element ref="question"/>
+            </xsd:sequence>
+        </xsd:complexType>
+        <xsd:unique name="uniqueQid">
+            <xsd:selector xpath="./question"/>
+            <xsd:field xpath="@qid"/>
+        </xsd:unique>
+    </xsd:element>
+
+    <xsd:element name="question">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="description"/>
+                <xsd:element ref="answers"/>
+            </xsd:sequence>
+            <xsd:attribute ref="qid" use="required"/>
+            <xsd:attribute ref="type" use="required"/>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="answers">
+        <xsd:complexType>
+            <xsd:sequence minOccurs="2" maxOccurs="unbounded">
+                <xsd:element ref="answer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="survey">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="title"/>
+                <xsd:element ref="description"/>
+                <xsd:element ref="questions"/>
+            </xsd:sequence>
+            <xsd:attribute ref="sid" use="required"/>
+        </xsd:complexType>
+    </xsd:element>
+
+    <!--/////////////////////// root ///////////////////////////////////////////////////-->
+    <xsd:element name="surveys">
+        <xsd:complexType>
+            <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+                <xsd:element ref="survey"/>
+            </xsd:sequence>
+        </xsd:complexType>
+        <xsd:unique name="uniqueSid">
+            <xsd:selector xpath=".//survey"/>
+            <xsd:field xpath="@sid"/>
+        </xsd:unique>
+    </xsd:element>
+
+
+</xsd:schema>
