@@ -68,16 +68,16 @@ public class SchemaValidator {
 
     public static void main(String[] args) {
 
-        SchemaValidator validator = new SchemaValidator("survey/survey.xsd");
+        SchemaValidator validator = new SchemaValidator("../XML/survey/survey.xsd");
 
-        File[] listOfFiles = new File("survey/invalid").listFiles();
+        File[] listOfFiles = new File("../XML/survey/invalid").listFiles();
 
 
         if(listOfFiles != null) {
             for (File file : listOfFiles) {
                 try {
-                    if (validator.validate("survey/invalid/" + file.getName()).contains("is valid")) {
-                        System.out.println("survey/invalid/" + file.getName());
+                    if (validator.validate("../XML/survey/invalid/" + file.getName()).contains("is valid")) {
+                        System.out.println("../XML/survey/invalid/" + file.getName());
                         return;
                     }
                 } catch (IOException ex) {
@@ -89,13 +89,13 @@ public class SchemaValidator {
         }
 
 
-        listOfFiles = new File("survey/valid").listFiles();
+        listOfFiles = new File("../XML/survey/valid").listFiles();
 
         if(listOfFiles != null) {
             for (File file : listOfFiles) {
                 try {
-                    if (validator.validate("survey/valid/" + file.getName()).contains("validation error")) {
-                        System.out.println("survey/valid/" + file.getName());
+                    if (validator.validate("../XML/survey/valid/" + file.getName()).contains("validation error")) {
+                        System.out.println("../XML/survey/valid/" + file.getName());
                         return;
                     }
                 } catch (IOException ex) {
