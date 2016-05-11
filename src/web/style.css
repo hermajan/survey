@@ -1,0 +1,26 @@
+html, body {
+  height: 100%;
+}
+
+.container-fluid {
+  margin: 0px 20px; 
+}
+
+.navbar {
+    margin-bottom: 0px;
+}
+.navbar .nav > li > a {
+    padding: 15px 10px;
+}
+.navbar-brand {
+    padding: 15px 10px;
+/*    color: whitesmoke !important;*/
+}
+.navbar-brand > img {
+	display: inline;
+}
+
+.page-header {
+	margin: 10px 0 5px;
+}
+
