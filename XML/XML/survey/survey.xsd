@@ -5,11 +5,11 @@
     <!--/////////////////////// definition of simple elements ////////////////////////-->
     <xsd:element name="description"     type="nonEmptyStringType"/>
     <xsd:element name="title"           type="nonEmptyStringType"/>
-    <xsd:element name="answer"          type="nonEmptyStringType"/>
 
     <!--/////////////////////// definition of attributes /////////////////////////////-->
     <xsd:attribute name="sid"           type="xsd:nonNegativeInteger"/>
     <xsd:attribute name="qid"           type="xsd:nonNegativeInteger"/>
+    <xsd:attribute name="aid"           type="xsd:nonNegativeInteger"/>
     <xsd:attribute name="type"          type="questionType"/>
 
     <!--/////////////////////// definition of simple types ///////////////////////////-->
@@ -50,6 +50,10 @@
             <xsd:attribute ref="qid" use="required"/>
             <xsd:attribute ref="type" use="required"/>
         </xsd:complexType>
+        <xsd:unique name="uniqueAid">
+            <xsd:selector xpath="./answers/answer"/>
+            <xsd:field xpath="@aid"/>
+        </xsd:unique>
     </xsd:element>
 
     <xsd:element name="answers">
@@ -57,6 +61,16 @@
             <xsd:sequence minOccurs="2" maxOccurs="unbounded">
                 <xsd:element ref="answer"/>
             </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="answer">
+        <xsd:complexType>
+            <xsd:simpleContent>
+                <xsd:extension base="nonEmptyStringType">
+                    <xsd:attribute ref="aid" use="required"/>
+                </xsd:extension>
+            </xsd:simpleContent>
         </xsd:complexType>
     </xsd:element>
 

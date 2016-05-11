@@ -94,8 +94,9 @@ public class SchemaValidator {
         if(listOfFiles != null) {
             for (File file : listOfFiles) {
                 try {
-                    if (validator.validate("../XML/survey/valid/" + file.getName()).contains("validation error")) {
-                        System.out.println("../XML/survey/valid/" + file.getName());
+                    String str = validator.validate("../XML/survey/valid/" + file.getName());
+                    if (str.contains("validation error")) {
+                        System.out.println(str);
                         return;
                     }
                 } catch (IOException ex) {
