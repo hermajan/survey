@@ -1,4 +1,4 @@
-#Application for the management of questionnaires
+#Survey
 
 [![Join the chat at https://gitter.im/hermajan/survey](https://badges.gitter.im/hermajan/survey.svg)](https://gitter.im/hermajan/survey?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
