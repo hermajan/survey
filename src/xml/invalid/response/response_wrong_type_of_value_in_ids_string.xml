@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<responses xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../response.xsd">
+    <response>
+        <surveyId>test</surveyId>
+        <questions>
+            <question>
+                <questionId>1</questionId>
+                <answers>
+                    <answerId>1</answerId>
+                </answers>
+            </question>
+            <question>
+                <questionId>2</questionId>
+                <answers>
+                    <answerId>test</answerId>
+                    <answerId>3</answerId>
+                    <answerId>4</answerId>
+                </answers>
+            </question>
+        </questions>
+    </response>
+    <response>
+        <surveyId>2</surveyId>
+        <questions>
+            <question>
+                <questionId>1</questionId>
+                <answers>
+                    <answerId>test</answerId>
+                </answers>
+            </question>
+            <question>
+                <questionId>2</questionId>
+                <answers>
+                    <answerId>3</answerId>
+                </answers>
+            </question>
+        </questions>
+    </response>
+</responses>

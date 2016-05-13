@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <!--/////////////////////// definition of simple elements ////////////////////////-->
+    <xsd:element name="answerId"        type="xsd:nonNegativeInteger"/>
+    <xsd:element name="questionId"      type="xsd:nonNegativeInteger"/>
+    <xsd:element name="surveyId"        type="xsd:nonNegativeInteger"/>
+
+
+    <!--/////////////////////// definition of simple types ///////////////////////////-->
+    <xsd:simpleType name="nonEmptyStringType">
+        <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!--/////////////////////// definition of complex elements ///////////////////////-->
+    <xsd:element name="answers">
+        <xsd:complexType>
+            <xsd:sequence minOccurs="1" maxOccurs="unbounded">
+                <xsd:element ref="answerId"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="question">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="questionId"/>
+                <xsd:element ref="answers"/>
+            </xsd:sequence>
+        </xsd:complexType>
+        <xsd:unique name="uniqueAnswerId">
+            <xsd:selector xpath=".//answerId"/>
+            <xsd:field xpath="."/>
+        </xsd:unique>
+    </xsd:element>
+
+    <xsd:element name="questions">
+        <xsd:complexType>
+            <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+                <xsd:element ref="question"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="response">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="surveyId"/>
+                <xsd:element ref="questions"/>
+            </xsd:sequence>
+        </xsd:complexType>
+        <xsd:unique name="uniqueQuestionId">
+            <xsd:selector xpath=".//questionId"/>
+            <xsd:field xpath="."/>
+        </xsd:unique>
+    </xsd:element>
+
+    <!--/////////////////////// root ///////////////////////////////////////////////////-->
+    <xsd:element name="responses">
+        <xsd:complexType>
+            <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+                <xsd:element ref="response"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+</xsd:schema>

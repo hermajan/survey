@@ -1,58 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!--xml 1-->
-<responses>
+<!--root element-->
+<responses xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="response.xsd">
     <!--
-        - vsetky ID budu unique tak, ako v `survey.xml` az na sid
-        (kedze moze viac ludi odpovedat na rovnaky dotaznik)
-        - nevedel som sa rozhodnut, ci tam maju byt aj typy
-        samotnych otazok (zislo by sa to na validaciu)
-     -->
-    <response sid="1">
-        <question qid="1"> <!--type="closed"-->
-            <answer aid="1"/> <!--ALEBO <answer>1</answer> -->
-        </question>
-        <question qid="2"> <!--type="multiple"-->
-            <answer aid="1"/> <!--ALEBO <answer>1</answer> -->
-            <answer aid="3"/> <!--ALEBO <answer>3</answer> -->
-            <answer aid="4"/> <!--ALEBO <answer>4</answer> -->
-        </question>
-    </response>
-
-    <response sid="2">
-        <question qid="1"> <!--type="closed"-->
-            <answer aid="1"/> <!--ALEBO <answer>1</answer> -->
-        </question>
-        <question qid="2"> <!--type="closed"-->
-            <answer aid="3"/> <!--ALEBO <answer>3</answer> -->
-        </question>
-    </response>
-</responses>
-
-<!--xml 2-->
-<responses>
-    <!--
-        - mne osobne pride tato verzia spravnejsia ako predosla
-        (aj ked vyzera byt zlozitejsia a neintuitivna)lebo
-        atributy definuju metadata a nie samotne data. A v
-        tomto pripdade su pre nas ID samotnymi datami -
-        neidentifikuju nam jednotlive elementy.
-        - nevedel som sa rozhodnut, ci tam maju byt aj typy
-        samotnych otazok (zislo by sa to na validaciu)
+        - element response represents response from respondent
+        - it must contain survey ID and questions at all times
     -->
     <response>
+        <!--
+            - this element has the value of survey ID from survey.xml
+            - only non-negative integer is permitted
+        -->
         <surveyId>1</surveyId>
+        <!--
+            - questions is a set of questions with AT LEAST ONE selected answer
+            - if there was no selected answer for question it is not present
+        -->
         <questions>
+            <!--
+                - question element represents question with at least one selected answer
+                - must contain question ID and set of answers
+                - question ID is unique inside response
+            -->
             <question>
+                <!--
+                    - this element has the value of question ID from survey.xml
+                    - only non-negative integer is permitted
+                -->
                 <questionId>1</questionId>
-                <!-- <questionType>closed</questionType>-->
+                <!--
+                    - answers represents set of selected answers in question
+                    - must contain at least one ID
+                -->
                 <answers>
+                    <!--
+                        - this element has the value of answer ID from survey.xml
+                        - only non-negative integer is permitted
+                    -->
                     <answerId>1</answerId>
                 </answers>
             </question>
             <question>
                 <questionId>2</questionId>
-                <!-- <questionType>multiple</questionType>-->
                 <answers>
                     <answerId>1</answerId>
                     <answerId>3</answerId>
@@ -66,14 +55,12 @@
         <questions>
             <question>
                 <questionId>1</questionId>
-                <!-- <questionType>closed</questionType>-->
                 <answers>
                     <answerId>1</answerId>
                 </answers>
             </question>
             <question>
                 <questionId>2</questionId>
-                <!-- <questionType>closed</questionType>-->
                 <answers>
                     <answerId>3</answerId>
                 </answers>
