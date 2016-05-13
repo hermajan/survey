@@ -5,7 +5,7 @@
     <survey sid="1">
         <title>Spokojnosť s FI</title>
         <description>
-            Tento dotazík je určený pre študentov FI a má dopomôcť k skvalitneniu štúdia.
+            Tento dotazník je určený pre študentov FI a má dopomôcť k skvalitneniu štúdia.
         </description>
         <questions>
             <question qid="1" type="closed">
