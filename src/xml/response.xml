@@ -1,4 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<response>
 
-</response>
+<!--xml 1-->
+<responses>
+    <!--
+        - vsetky ID budu unique tak, ako v `survey.xml` az na sid
+        (kedze moze viac ludi odpovedat na rovnaky dotaznik)
+        - nevedel som sa rozhodnut, ci tam maju byt aj typy
+        samotnych otazok (zislo by sa to na validaciu)
+     -->
+    <response sid="1">
+        <question qid="1"> <!--type="closed"-->
+            <answer aid="1"/> <!--ALEBO <answer>1</answer> -->
+        </question>
+        <question qid="2"> <!--type="multiple"-->
+            <answer aid="1"/> <!--ALEBO <answer>1</answer> -->
+            <answer aid="3"/> <!--ALEBO <answer>3</answer> -->
+            <answer aid="4"/> <!--ALEBO <answer>4</answer> -->
+        </question>
+    </response>
+
+    <response sid="2">
+        <question qid="1"> <!--type="closed"-->
+            <answer aid="1"/> <!--ALEBO <answer>1</answer> -->
+        </question>
+        <question qid="2"> <!--type="closed"-->
+            <answer aid="3"/> <!--ALEBO <answer>3</answer> -->
+        </question>
+    </response>
+</responses>
+
+<!--xml 2-->
+<responses>
+    <!--
+        - mne osobne pride tato verzia spravnejsia ako predosla
+        (aj ked vyzera byt zlozitejsia a neintuitivna)lebo
+        atributy definuju metadata a nie samotne data. A v
+        tomto pripdade su pre nas ID samotnymi datami -
+        neidentifikuju nam jednotlive elementy.
+        - nevedel som sa rozhodnut, ci tam maju byt aj typy
+        samotnych otazok (zislo by sa to na validaciu)
+    -->
+    <response>
+        <surveyId>1</surveyId>
+        <questions>
+            <question>
+                <questionId>1</questionId>
+                <!-- <questionType>closed</questionType>-->
+                <answers>
+                    <answerId>1</answerId>
+                </answers>
+            </question>
+            <question>
+                <questionId>2</questionId>
+                <!-- <questionType>multiple</questionType>-->
+                <answers>
+                    <answerId>1</answerId>
+                    <answerId>3</answerId>
+                    <answerId>4</answerId>
+                </answers>
+            </question>
+        </questions>
+    </response>
+    <response>
+        <surveyId>2</surveyId>
+        <questions>
+            <question>
+                <questionId>1</questionId>
+                <!-- <questionType>closed</questionType>-->
+                <answers>
+                    <answerId>1</answerId>
+                </answers>
+            </question>
+            <question>
+                <questionId>2</questionId>
+                <!-- <questionType>closed</questionType>-->
+                <answers>
+                    <answerId>3</answerId>
+                </answers>
+            </question>
+        </questions>
+    </response>
+</responses>
