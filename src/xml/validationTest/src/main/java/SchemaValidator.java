@@ -18,6 +18,8 @@ public class SchemaValidator {
     private DocumentBuilder docBuilder;
     private String error;
 
+    private static final String PATH = "../";
+
     private class ValidationErrorsHandler implements ErrorHandler{
         public void warning(SAXParseException exception) throws SAXException {
             Logger.getAnonymousLogger(SchemaValidator.class.getName()).log(Level.INFO,exception.getMessage());
@@ -66,18 +68,17 @@ public class SchemaValidator {
         return xmlFilename + " is valid";
     }
 
-    public static void main(String[] args) {
+    private void validateBothValidInvalid(String xmlName){
 
-        SchemaValidator validator = new SchemaValidator("../XML/survey/survey.xsd");
+        String fileName = xmlName.replaceAll(".xml","");
 
-        File[] listOfFiles = new File("../XML/survey/invalid").listFiles();
-
+        File[] listOfFiles = new File(PATH + "invalid/" + fileName + "/").listFiles();
 
         if(listOfFiles != null) {
             for (File file : listOfFiles) {
                 try {
-                    if (validator.validate("../XML/survey/invalid/" + file.getName()).contains("is valid")) {
-                        System.out.println("../XML/survey/invalid/" + file.getName());
+                    if (this.validate(PATH + "invalid/" + fileName + "/" + file.getName()).contains("is valid")) {
+                        System.out.println(PATH + "invalid/" + fileName + "/" + file.getName());
                         return;
                     }
                 } catch (IOException ex) {
@@ -85,16 +86,16 @@ public class SchemaValidator {
                 }
             }
 
-            System.out.println("All files were invalid and should be invalid. [OK]");
+            System.out.println("All " + xmlName + " files were invalid and should be invalid. [OK]");
         }
 
 
-        listOfFiles = new File("../XML/survey/valid").listFiles();
+        listOfFiles = new File(PATH + "valid/" + fileName + "/").listFiles();
 
         if(listOfFiles != null) {
             for (File file : listOfFiles) {
                 try {
-                    String str = validator.validate("../XML/survey/valid/" + file.getName());
+                    String str = this.validate(PATH + "valid/" + fileName + "/" + file.getName());
                     if (str.contains("validation error")) {
                         System.out.println(str);
                         return;
@@ -104,7 +105,13 @@ public class SchemaValidator {
                 }
             }
 
-            System.out.println("All files were valid and should be valid. [OK]");
+            System.out.println("All " + xmlName + " files were valid and should be valid. [OK]");
         }
+    }
+
+
+    public static void main(String[] args) {
+        new SchemaValidator(PATH + "survey.xsd").validateBothValidInvalid("survey.xml");
+        new SchemaValidator(PATH + "response.xsd").validateBothValidInvalid("response.xml");
     }
 }
