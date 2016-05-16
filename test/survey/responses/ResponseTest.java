@@ -24,10 +24,10 @@ public class ResponseTest {
 		
 		int sid = 1;
 		Map<Integer, List<Integer>> questionsAnswers = new HashMap<>();
-		List<Integer> list = new ArrayList<>();
-		list.add(5); list.add(8);
-		questionsAnswers.put(2, list);
-		questionsAnswers.put(4, list);
+		List<Integer> answers = new ArrayList<>();
+		answers.add(5); answers.add(8);
+		questionsAnswers.put(2, answers);
+		questionsAnswers.put(4, answers);
 		
 		r.createResponse(sid, questionsAnswers);
 		r.createResponse(sid+8, questionsAnswers);
