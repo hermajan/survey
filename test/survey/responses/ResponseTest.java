@@ -7,19 +7,19 @@ import java.util.Map;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import org.junit.Test;
-import static survey.responses.Response.printXML;
+import static survey.responses.Response.stringXML;
 
 /**
  * Tests for the Response class.
  */
 public class ResponseTest {
 	/**
-	 * Test of printXML method, of class Response.
+	 * Test of stringXML method, of class Response.
 	 * @throws javax.xml.parsers.ParserConfigurationException
 	 * @throws javax.xml.transform.TransformerException
 	 */
 	@Test
-	public void testPrintXML() throws ParserConfigurationException, TransformerException {
+	public void testStringXML() throws ParserConfigurationException, TransformerException {
 		Response r = new Response();
 		
 		int sid = 1;
@@ -31,6 +31,6 @@ public class ResponseTest {
 		
 		r.createResponse(sid, questionsAnswers);
 		r.createResponse(sid+8, questionsAnswers);
-		printXML(r.getDoc());
+		System.out.println(stringXML(r.getDoc()));
 	}
 }

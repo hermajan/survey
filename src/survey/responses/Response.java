@@ -83,13 +83,19 @@ public class Response {
 		}
 	}
 
-	public static final void printXML(Document xml) throws TransformerException {
+	/**
+	 * Returns XML document in string.
+	 * @param xml XML document.
+	 * @return XML document in string.
+	 * @throws TransformerException 
+	 */
+	public static final String stringXML(Document xml) throws TransformerException {
 		Transformer tf = TransformerFactory.newInstance().newTransformer();
 		tf.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
 		tf.setOutputProperty(OutputKeys.INDENT, "yes");
 		tf.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
 		Writer out = new StringWriter();
 		tf.transform(new DOMSource(xml), new StreamResult(out));
-		System.out.println(out.toString());
+		return out.toString();
 	}
 }
