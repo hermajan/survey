@@ -33,6 +33,23 @@ window.addEventListener("load", activeLinks);
 window.addEventListener("hashchange", activeLinks);
 
 /**
+ * Returns GET parameters for form.
+ * @returns {Array|getParameters.parameters} Parameters.
+ */
+function getParameters() {
+	var parameters = [];
+	
+	var array = window.location.search.replace("?", "").split("&");
+	if(array.length > 0 && array[0] !== "") {
+		for(var i=0; i<array.length; i++) {
+			var value = array[i].split("=");
+			parameters.push(value[1]);
+		}
+	}
+	return parameters;
+}
+
+/**
  * Does a AJAX request for obtaining questions.
  */
 function doAjax() {
@@ -42,11 +59,13 @@ function doAjax() {
 			changeContent(xhr.responseXML);
 		}
 	};
-	xhr.open("GET", "../xml/survey.xml", true);
+	xhr.open("GET", "survey.xml", true);
 	xhr.send();
 }
-window.addEventListener("load", doAjax);
+doAjax();
+//window.addEventListener("load", doAjax);
 window.addEventListener("hashchange", doAjax);
+getResponseAjax();
 
 /**
  * Changes content on page.
@@ -82,4 +101,26 @@ function changeContent(xml) {
 				"<p>Select set of questions in the top menu.<\p>";
 		}
 	}
+}
+
+/**
+ * Does a AJAX request for obtaining response.
+ */
+function getResponseAjax() {
+	var xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function() {
+		if(xhr.readyState === 4 && xhr.status === 200) {
+			getResponse(xhr.responseText);
+		}
+	};
+	xhr.open("GET", "scriptlet.jsp"+window.location.search, true);
+	xhr.send();
+}
+
+/**
+ * Adds response to the page.
+ * @param {string} output Response.
+ */
+function getResponse(output) {
+	document.getElementById("content").innerHTML = output;
 }

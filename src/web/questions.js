@@ -17,14 +17,21 @@ function renderQuestions(xml, id) {
 	element.appendChild(p);
 	
 	var form = document.createElement("form");
-	//form.action = "";
+	//form.action = "scriptlet.jsp";
 	form.method = "get";
 	form.name = "qForm";
+	form.addEventListener("submit", getResponseAjax);
 	
 	var questions = survey.getElementsByTagName("question");
 	for(var i=0; i<questions.length; i++) {
 		form.appendChild(getQuestion(questions[i]));
 	}
+	
+	var page = document.createElement("input");
+	page.type = "hidden";
+	page.value = window.location.hash.replace("#s", "");
+	page.name = "s";
+	form.appendChild(page);
 	
 	var button = document.createElement("button");
 	button.id = "submitAnswers";
@@ -87,21 +94,4 @@ function getQuestion(question) {
 	}
 	
 	return task;
-}
-
-/**
- * Returns GET parameters for form.
- * @returns {Array|getParameters.parameters} Parameters.
- */
-function getParameters() {
-	var parameters = [];
-	
-	var array = window.location.search.replace("?", "").split("&");
-	if(array.length > 0 && array[0] !== "") {
-		for(var i=0; i<array.length; i++) {
-			var value = array[i].split("=");
-			parameters.push(value[1]);
-		}
-	}
-	return parameters;
 }

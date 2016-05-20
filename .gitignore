@@ -1,7 +1,6 @@
 build/
 nbproject/
 .nbproject-*/
-META-INF
 .idea
 
 *.class
