@@ -39,7 +39,6 @@ public class XMLmanagement {
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = dbf.newDocumentBuilder();
 		xml = builder.newDocument();
-		xml.toString();
 	}
 	
 	public XMLmanagement(Document doc) {

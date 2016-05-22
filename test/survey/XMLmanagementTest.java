@@ -10,7 +10,6 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import junit.framework.TestCase;
 import org.xml.sax.SAXException;
-import survey.responses.Response;
 
 /**
  * Tests for the XMLmanagement class.

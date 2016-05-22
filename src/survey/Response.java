@@ -1,18 +1,10 @@
-package survey.responses;
+package survey;
 
-import java.io.StringWriter;
-import java.io.Writer;
 import java.util.List;
 import java.util.Map;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -81,21 +73,5 @@ public class Response {
 		if(doc.getElementsByTagName("responses").getLength() == 0) {
 			doc.appendChild(responses);
 		}
-	}
-
-	/**
-	 * Returns XML document in string.
-	 * @param xml XML document.
-	 * @return XML document in string.
-	 * @throws TransformerException 
-	 */
-	public static final String stringXML(Document xml) throws TransformerException {
-		Transformer tf = TransformerFactory.newInstance().newTransformer();
-		tf.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
-		tf.setOutputProperty(OutputKeys.INDENT, "yes");
-		tf.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
-		Writer out = new StringWriter();
-		tf.transform(new DOMSource(xml), new StreamResult(out));
-		return out.toString();
 	}
 }
