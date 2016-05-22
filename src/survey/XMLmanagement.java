@@ -30,6 +30,10 @@ public class XMLmanagement {
 	public Document getXml() {
 		return xml;
 	}
+	
+	public void setXml(Document xml) {
+		this.xml = xml;
+	}
 
 	/**
 	 * Constuctor of XMLmanagement.

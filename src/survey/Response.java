@@ -17,11 +17,19 @@ public class Response {
 	public Document getDoc() {
 		return doc;
 	}
+	
+	public void setDoc(Document doc) {
+		this.doc = doc;
+	}
 
 	public Response() throws ParserConfigurationException {
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = dbf.newDocumentBuilder();
 		doc = builder.newDocument();
+	}
+	
+	public Response(Document doc) {
+		this.doc = doc;
 	}
 	
 	/**
