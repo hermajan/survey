@@ -73,9 +73,9 @@ public class XMLmanagement {
 		tf.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
 		tf.setOutputProperty(OutputKeys.INDENT, "yes");
 		tf.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
-        DOMSource source = new DOMSource(xml);
-        StreamResult result = new StreamResult(new FileOutputStream(fileName));
-        tf.transform(source, result);
+		DOMSource source = new DOMSource(xml);
+		StreamResult result = new StreamResult(new FileOutputStream(fileName));
+		tf.transform(source, result);
 	}
 	
 	/**
@@ -87,7 +87,7 @@ public class XMLmanagement {
 	 */
 	public void importing(String fileName) throws ParserConfigurationException, SAXException, IOException {
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder builder = factory.newDocumentBuilder();
-        xml = builder.parse(fileName);
+		DocumentBuilder builder = factory.newDocumentBuilder();
+		xml = builder.parse(fileName);
 	}
 }
