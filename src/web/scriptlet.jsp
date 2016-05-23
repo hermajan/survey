@@ -1,3 +1,5 @@
+<%@page import="org.w3c.dom.Element"%>
+<%@page import="org.w3c.dom.Document"%>
 <%@page import="java.io.File"%>
 <%@page import="java.util.Enumeration"%>
 <%@page import="java.util.ArrayList"%>
@@ -17,6 +19,7 @@
 	</head>
 	<body>
 <%
+	// getting data
 	int sid = Integer.parseInt(request.getParameter("s"));
 	Map<Integer, List<Integer>> questionsAnswers = new HashMap<>();
 	List<Integer> list = new ArrayList<>();
@@ -46,8 +49,9 @@
 	  }
 	}
 	
+	// exporting to the file
 	XMLmanagement xman = new XMLmanagement();
-	String responseFile = request.getServletContext().getRealPath("/")+"\\response.xml";
+	String responseFile = request.getServletContext().getRealPath("/")+"\\responses.xml";
 	
 	Response r = new Response();
 	File f = new File(responseFile);
@@ -60,15 +64,25 @@
 	xman.setXml(r.getDoc());
 	xman.exporting(responseFile);
 	
+	// handling of the output
 	responseFile = responseFile.replace("\\\\", "\\");
+	xman = new XMLmanagement();
+	xman.importing(request.getServletContext().getRealPath("/")+"\\survey.xml");
+	Document doc = xman.getXml();
+	Element surveyElement = (Element)doc.getElementsByTagName("survey").item(sid-1);
+	String surveyTitle = surveyElement.getElementsByTagName("title").item(0).getTextContent();
 %>
 
 <br>
 <div class="alert alert-success" role="alert">
-	Response to the survey #<%= sid %> was saved to 
+	Response of the survey <%= surveyTitle %> was saved to the 
 	<a href="<%= responseFile %>" class="alert-link"><%= responseFile %></a>.
 </div>
 
-<a href="index.html">&lt; go back</a>
+<nav>
+  <ul class="pager">
+    <li class="previous"><a href="index.html"><span aria-hidden="true">&larr;</span> go back</a></li>
+  </ul>
+</nav>
 	</body>
 </html>

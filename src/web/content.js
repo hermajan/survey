@@ -72,33 +72,42 @@ getResponseAjax();
  * @param {xml} xml XML file.
  */
 function changeContent(xml) {
+	var list = document.createElement("div");
+	list.className = "list-group";
+	
 	var surveys = xml.getElementsByTagName("survey");
 	for(var i=1; i<=surveys.length; i++) {
 		var a = document.createElement("a");
-		a.href = "#s"+i; a.innerHTML = "Survey #"+i;
+		a.href = "#s"+i; a.innerHTML = surveys[i-1].getElementsByTagName("title")[0].textContent;
 		
 		var li = document.createElement("li");
 		li.id = "s"+i;
 		li.appendChild(a);
-		
+
 		if(!document.getElementById("s"+i)) {
 			document.getElementById("menu").appendChild(li);
 		}
-		
 		activeLinks();
+		
+		var link = a.cloneNode();
+		link.className = "list-group-item";
+		link.innerHTML = surveys[i-1].getElementsByTagName("title")[0].textContent;
+		list.appendChild(link);
 	}
 	
 	var hash = window.location.hash.replace("#", "");
 	for(var i=1; i<=surveys.length; i++) {
+		var content = document.getElementById("content");
 		if(hash === ("s"+i)) {
-			document.getElementById("content").innerHTML = "";
+			content.innerHTML = "";
 			renderQuestions(xml, i);
 			break;
 		}
 		else {
-			document.getElementById("content").innerHTML = 
+			content.innerHTML = 
 				"<h1 class='page-header'>Survey</h1>"+
-				"<p>Select set of questions in the top menu.<\p>";
+				"<p>Select set of questions in the top menu or here:<\p>";
+			content.appendChild(list);
 		}
 	}
 }

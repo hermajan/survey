@@ -35,7 +35,7 @@ function renderQuestions(xml, id) {
 	
 	var button = document.createElement("button");
 	button.id = "submitAnswers";
-	button.className = "btn btn-default";
+	button.className = "btn btn-primary";
 	//button.type = "submit";
 	button.addEventListener("click", function(){ return checkAnswers(); });
 	button.innerHTML = "Submit";
@@ -59,18 +59,21 @@ function renderQuestions(xml, id) {
 function getQuestion(question) {
 	var task = document.createElement("fieldset");
 	task.id = question.getAttribute("qid");
-	//question.classList.add("question");
+	task.className = "panel panel-info";
 	
 	var query = document.createElement("legend");
 	query.innerHTML = question.getElementsByTagName("description")[0].innerHTML;
+	query.className = "panel-heading";
 	task.appendChild(query);
 	
+	var solutions = document.createElement("div");
+	solutions.className = "panel-body";
 	var answers = question.getElementsByTagName("answer");
 	for(var i=0; i<answers.length; i++) {
 		var answer = document.createElement("div");
 		
 		var box = document.createElement("input");
-		box.id = "aid"+answers[i].getAttribute("aid");
+		box.id = "q"+task.getAttribute("id")+"a"+answers[i].getAttribute("aid");
 		box.value = answers[i].getAttribute("aid");
 		box.name = "qid"+task.getAttribute("id");
 		
@@ -85,13 +88,14 @@ function getQuestion(question) {
 		answer.classList.add(qtype);
 
 		var label = document.createElement("label");
-		label.htmlFor = answers[i].getAttribute("aid");
+		label.htmlFor = "q"+task.getAttribute("id")+"a"+answers[i].getAttribute("aid");
 		label.appendChild(box);
 		label.innerHTML += answers[i].innerHTML;
 		
 		answer.appendChild(label);
-		task.appendChild(answer);
+		solutions.appendChild(answer);
 	}
+	task.appendChild(solutions);
 	
 	return task;
 }

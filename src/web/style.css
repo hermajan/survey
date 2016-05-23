@@ -8,13 +8,18 @@ html, body {
 
 .navbar {
     margin-bottom: 0px;
+	background-color: #428bca;
+}
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
+	background-color: #337ab7;
 }
 .navbar .nav > li > a {
     padding: 15px 10px;
+	color: white;
 }
 .navbar-brand {
     padding: 15px 10px;
-/*    color: whitesmoke !important;*/
+    color: whitesmoke !important;
 }
 .navbar-brand > img {
 	display: inline;
@@ -24,3 +29,9 @@ html, body {
 	margin: 10px 0 5px;
 }
 
+.panel-heading {
+	margin-bottom: 0;
+}
+.panel-body {
+	padding: 0 15px;
+}
