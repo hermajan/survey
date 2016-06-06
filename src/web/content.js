@@ -50,22 +50,31 @@ function getParameters() {
 }
 
 /**
- * Does a AJAX request for obtaining questions.
+ * Does a AJAX request.
+ * @param {function} callback Callback function.
+ * @param {string} url URL for AJAX request.
+ * @param {string} responseType Type of the response.
  */
-function doAjax() {
-	var xhr = new XMLHttpRequest();
+function doAjax(callback, url, responseType) {
+ var xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function() {
 		if(xhr.readyState === 4 && xhr.status === 200) {
-			changeContent(xhr.responseXML);
+			if(responseType === "xml") {
+				callback(xhr.responseXML);
+			}
+			else {
+				callback(xhr.responseText);
+			}
 		}
 	};
-	xhr.open("GET", "survey.xml", true);
+	xhr.open("GET", url, true);
+	xhr.setRequestHeader("Cache-Control", "no-cache, must-revalidate");
+	xhr.setRequestHeader("Expires", "-1");
 	xhr.send();
 }
-doAjax();
-//window.addEventListener("load", doAjax);
-window.addEventListener("hashchange", doAjax);
-getResponseAjax();
+doAjax(changeContent, "survey.xml", "xml");
+window.addEventListener("hashchange", function() { doAjax(changeContent, "survey.xml", "xml"); });
+doAjax(getResponse, "scriptlet.jsp"+window.location.search, "text");
 
 /**
  * Changes content on page.
@@ -110,20 +119,6 @@ function changeContent(xml) {
 			content.appendChild(list);
 		}
 	}
-}
-
-/**
- * Does a AJAX request for obtaining response.
- */
-function getResponseAjax() {
-	var xhr = new XMLHttpRequest();
-	xhr.onreadystatechange = function() {
-		if(xhr.readyState === 4 && xhr.status === 200) {
-			getResponse(xhr.responseText);
-		}
-	};
-	xhr.open("GET", "scriptlet.jsp"+window.location.search, true);
-	xhr.send();
 }
 
 /**

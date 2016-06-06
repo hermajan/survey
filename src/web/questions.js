@@ -20,7 +20,9 @@ function renderQuestions(xml, id) {
 	//form.action = "scriptlet.jsp";
 	form.method = "get";
 	form.name = "qForm";
-	form.addEventListener("submit", getResponseAjax);
+	form.addEventListener("submit", function() {
+		doAjax(getResponse, "scriptlet.jsp"+window.location.search, "text");
+	});
 	
 	var questions = survey.getElementsByTagName("question");
 	for(var i=0; i<questions.length; i++) {
@@ -37,7 +39,9 @@ function renderQuestions(xml, id) {
 	button.id = "submitAnswers";
 	button.className = "btn btn-primary";
 	//button.type = "submit";
-	button.addEventListener("click", function(){ return checkAnswers(); });
+	button.addEventListener("click", function(){
+		doAjax(getResponse, "scriptlet.jsp"+window.location.search, "text");
+	});
 	button.innerHTML = "Submit";
 	
 	form.appendChild(button);
