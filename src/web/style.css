@@ -25,6 +25,15 @@ html, body {
 	display: inline;
 }
 
+.github-link {
+	padding: 10px !important;
+}
+.octicon {
+	display: inline-block;
+	vertical-align: text-top;
+	fill: currentcolor;
+}
+
 .page-header {
 	margin: 10px 0 5px;
 }
