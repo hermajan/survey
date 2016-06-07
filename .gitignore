@@ -1,0 +1,7 @@
+﻿build/
+nbproject/
+.nbproject-*/
+.idea
+
+*.class
+
