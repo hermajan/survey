@@ -77,7 +77,7 @@
 
 <br>
 <div class="alert alert-success" role="alert">
-	Response of the survey <%= surveyTitle %> was saved to the 
+	Responses of the survey <%= surveyTitle %> were saved to the 
 	<a href="<%= responseFile %>" class="alert-link"><%= responseFile %></a>.
 </div>
 
