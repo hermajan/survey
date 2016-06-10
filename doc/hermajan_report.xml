@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE article>
+<article xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <info>
+    <title></title>
+  </info>
+<section id="survey">
+  <title>Survey</title>
+  <section id="jan-hermann">
+    <title>Jan Hermann</title>
+    <para>
+      In this project named Survey I led the team and also I was
+      responsible for creating web interface of the application. Except
+      that I made two Java classes for easier processing of the data.
+      They are <emphasis>Response.java</emphasis> and
+      <emphasis>XMLmanagement.java</emphasis>.
+    </para>
+    <section id="leading">
+      <title>Leading</title>
+      <para>
+        As a leader I created the repository for the source code, web
+        page about the project, parts of the documentation and I was
+        trying to coordinate work on the project.
+      </para>
+      <para>
+        For communication between members of the project, we were using
+        web service Gitter. This we used for text messaging in a chat
+        room about problems and ideas for the project.
+      </para>
+    </section>
+    <section id="web-interface">
+      <title>Web interface</title>
+      <para>
+        Web interface is used primarily for answering questions from
+        users and storing responses from users. It was written in
+        languages HTML, CSS, JavaScript and Java. For nicer output is
+        used web framework Bootstrap.
+      </para>
+      <para>
+        After the user run the web interface, Survey loads list of
+        available questionnaires on the page. User selects one of them
+        and form with questions is rendered. There the user will fill
+        answers in given questionnaire. Once the user fills in answers
+        and submits them, the application sends responses to the server.
+        There they are processed through the JSP scriptlet. Then they
+        are saved on the server in <emphasis>responses.xml</emphasis>
+        file.
+      </para>
+      <para>
+        Loading of the data is made via AJAX requests from the page to
+        the server. For rendering is used HTML, CSS, JavaScript and
+        Bootstrap. Every questionnaire with questions and answers is
+        saved in <emphasis>survey.xml</emphasis> file. Processing of
+        responses is handled on the server by Java and its JSP
+        scriptlet.
+      </para>
+    </section>
+    <section id="response.java">
+      <title>Response.java</title>
+      <para>
+        This class creates XML document for storing responses. Questions
+        and answers are stored in a hash map and then from it is made a
+        XML document with response.
+      </para>
+    </section>
+    <section id="xmlmanagement.java">
+      <title>XMLmanagement.java</title>
+      <para>
+        This class is used for easier importing and exporting XML
+        documents into files.
+      </para>
+    </section>
+  </section>
+</section>
+</article>
