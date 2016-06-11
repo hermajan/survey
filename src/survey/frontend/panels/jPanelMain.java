@@ -3,13 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pokus2.frontend.panels;
+package survey.frontend.panels;
 
 import java.awt.BorderLayout;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.SwingUtilities;
-import pokus2.backend.SurveyEngine;
-import pokus2.backend.entities.Survey;
+import javax.swing.table.TableColumn;
+import survey.backend.SurveyEngine;
+import survey.backend.entities.Survey;
+import survey.frontend.models.SurveyTableModel;
 
 /**
  *
@@ -27,6 +31,12 @@ public class jPanelMain extends javax.swing.JPanel {
     public jPanelMain(SurveyEngine se) {
         this.se = se;
         initComponents();
+        updateTable();
+    }
+    
+    private void updateTable(){
+        SurveyTableModel model  = (SurveyTableModel) jTableSurveys.getModel();
+        model.recreateSurveys(se.getSurveysIdsTitles());
     }
 
     /**
@@ -39,22 +49,16 @@ public class jPanelMain extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableSurveys = new javax.swing.JTable();
         jButtonCreate = new javax.swing.JButton();
         jButtonEdit = new javax.swing.JButton();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        jTableSurveys.setModel(new SurveyTableModel());
+        jScrollPane1.setViewportView(jTableSurveys);
+        jTableSurveys.setAutoResizeMode( JTable.AUTO_RESIZE_ALL_COLUMNS );
+        TableColumn columnA = jTableSurveys.getColumn("ID");
+        columnA.setMinWidth(50);
+        columnA.setMaxWidth(50);
 
         jButtonCreate.setText("Create survey");
         jButtonCreate.addActionListener(new java.awt.event.ActionListener() {
@@ -64,6 +68,11 @@ public class jPanelMain extends javax.swing.JPanel {
         });
 
         jButtonEdit.setText("Edit survey");
+        jButtonEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -93,21 +102,57 @@ public class jPanelMain extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCreateActionPerformed
+        Survey s = new Survey(-1, "", "", null);
         JFrame newFrame = new JFrame();
         newFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         newFrame.setLayout(new BorderLayout());
-        newFrame.add(new jPanelSurvey(se), BorderLayout.CENTER);
+        newFrame.add(new jPanelSurvey(se,s), BorderLayout.CENTER);
         JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
         newFrame.setLocation(topFrame.getX(),topFrame.getY());
         newFrame.pack();
+        newFrame.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                updateTable();
+                topFrame.setEnabled(true);
+            }
+        });
+        topFrame.setEnabled(false);
         newFrame.setVisible(true);
     }//GEN-LAST:event_jButtonCreateActionPerformed
+
+    private void jButtonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditActionPerformed
+        try {
+            SurveyTableModel model = (SurveyTableModel) jTableSurveys.getModel();
+            Integer sid = model.getSurveyOnRow(jTableSurveys.getSelectedRow()).getSid();
+            Survey s = se.getSurvey(sid);
+            JFrame newFrame = new JFrame();
+            newFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            newFrame.setLayout(new BorderLayout());
+            newFrame.add(new jPanelSurvey(se,s), BorderLayout.CENTER);
+            JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
+            newFrame.setLocation(topFrame.getX(),topFrame.getY());
+            newFrame.pack();
+            newFrame.addWindowListener(new java.awt.event.WindowAdapter() {
+                @Override
+                public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                    updateTable();
+                    topFrame.setEnabled(true);
+                }
+            });
+            topFrame.setEnabled(false);
+            newFrame.setVisible(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Please select survey first!", "Error",
+                                    JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButtonEditActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCreate;
     private javax.swing.JButton jButtonEdit;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableSurveys;
     // End of variables declaration//GEN-END:variables
 }

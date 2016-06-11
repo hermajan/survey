@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pokus2.backend;
+package survey.backend;
 
 /**
  *

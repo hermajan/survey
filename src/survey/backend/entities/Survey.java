@@ -1,4 +1,4 @@
-package pokus2.backend.entities;
+package survey.backend.entities;
 
 import java.util.List;
 

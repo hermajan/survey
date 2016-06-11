@@ -1,6 +1,6 @@
-package pokus2.backend;
+package survey.backend;
 
-import pokus2.backend.entities.Question;
+import survey.backend.entities.Question;
 import java.io.File;
 import java.io.IOException;
 import static java.lang.Integer.max;
@@ -23,8 +23,8 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-import pokus2.backend.entities.QuestionType;
-import pokus2.backend.entities.Survey;
+import survey.backend.entities.QuestionType;
+import survey.backend.entities.Survey;
 
 public class SurveyEngine {
     
@@ -36,7 +36,7 @@ public class SurveyEngine {
     * Constructor. Opens already existing valid xml survey file.
     * 
     * @param filePath path to the file to be opened 
-     * @throws pokus2.backend.SurveyEngineException 
+     * @throws survey.backend.SurveyEngineException 
     */
    public SurveyEngine(String filePath) throws SurveyEngineException {
        this.filePath = filePath;
@@ -77,11 +77,18 @@ public class SurveyEngine {
     * 
     * @param surveyId ID of the element
     * @return Survey class with all element's contents loaded
+     * @throws survey.backend.SurveyEngineException
     */
-   public Survey getSurvey(int surveyId) {
-        try {
-            Element survey = getSurveyElementBySid(surveyId);
-            
+   public Survey getSurvey(int surveyId) throws SurveyEngineException {
+        Element survey = null;
+       
+        try { 
+            survey = getSurveyElementBySid(surveyId);
+        } catch (NullPointerException e) {
+            throw new SurveyEngineException(e.getMessage());
+        }
+        
+        try {    
             List<Question> questions = new ArrayList<>();
             
             //get Questions of survey
@@ -119,7 +126,7 @@ public class SurveyEngine {
                     survey.getElementsByTagName("description").item(0).getTextContent(), 
                     questions);
         } catch (NumberFormatException | DOMException e) {
-            throw e;
+            throw new SurveyEngineException(e.getMessage());
         }
    }
    
@@ -130,7 +137,7 @@ public class SurveyEngine {
     * found for it.
     * 
     * @param survey survey information to be saved
-     * @throws pokus2.backend.SurveyEngineException 
+     * @throws survey.backend.SurveyEngineException 
     */
     public void saveSurvey(Survey survey) throws SurveyEngineException{
         surveyValidation(survey);

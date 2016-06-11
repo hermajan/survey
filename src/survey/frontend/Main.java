@@ -1,13 +1,12 @@
-package pokus2.frontend;
+package survey.frontend;
 
 import java.awt.BorderLayout;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
-import pokus2.backend.SurveyEngine;
-import pokus2.backend.SurveyEngineException;
-import pokus2.frontend.panels.jPanelMain;
-import pokus2.frontend.panels.jPanelSurvey;
+import survey.backend.SurveyEngine;
+import survey.backend.SurveyEngineException;
+import survey.frontend.panels.jPanelMain;
 
 
 public class Main {
@@ -19,7 +18,7 @@ public class Main {
             surveyEngine = new SurveyEngine("test.xml");
         } catch (SurveyEngineException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-            //System.exit(-1); TO DO
+            System.exit(-1);
         }
         
         final SurveyEngine se = surveyEngine;

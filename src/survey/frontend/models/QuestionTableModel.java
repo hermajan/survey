@@ -1,9 +1,9 @@
-package pokus2.frontend.models;
+package survey.frontend.models;
  
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
-import pokus2.backend.entities.Question;
+import survey.backend.entities.Question;
  
 
 public class QuestionTableModel extends AbstractTableModel{
@@ -37,20 +37,6 @@ public class QuestionTableModel extends AbstractTableModel{
         }
     }
    
-    @Override
-    public String getColumnName(int columnIndex) {
-        switch (columnIndex) {
-            case 0:
-                return "Qid";
-            case 1:
-                return "Question";
-            case 2:
-                return "Question Type";
-            default:
-                throw new IllegalArgumentException("columnIndex");
-        }
-    }
-    
     public Question getQuestionOnRow(int rowIndex){
         Question question = questions.get(rowIndex);
         return question;

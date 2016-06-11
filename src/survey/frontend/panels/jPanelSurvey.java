@@ -3,15 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pokus2.frontend.panels;
+package survey.frontend.panels;
 
 import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
-import pokus2.backend.SurveyEngine;
-import pokus2.backend.SurveyEngineException;
-import pokus2.backend.entities.Survey;
-import pokus2.frontend.models.QuestionTableModel;
+import survey.backend.SurveyEngine;
+import survey.backend.entities.Survey;
+import survey.frontend.models.QuestionTableModel;
 
 /**
  *
@@ -20,14 +19,16 @@ import pokus2.frontend.models.QuestionTableModel;
 public class jPanelSurvey extends javax.swing.JPanel {
 
     private final SurveyEngine se;
-    private Survey survey;
+    private final Survey survey;
     
     /**
      * Creates new form jPanelCreate
      * @param se
+     * @param survey
      */
-    public jPanelSurvey(SurveyEngine se) {
+    public jPanelSurvey(SurveyEngine se, Survey survey) {
         this.se = se;
+        this.survey = survey;
         initComponents();
     }
 
@@ -51,11 +52,6 @@ public class jPanelSurvey extends javax.swing.JPanel {
         jLabelQuestions = new javax.swing.JLabel();
 
         jButtonOk.setText("Save Survey");
-        jButtonOk.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonOkActionPerformed(evt);
-            }
-        });
 
         jButtonAddQuestion.setText("Add Question");
         jButtonAddQuestion.addActionListener(new java.awt.event.ActionListener() {
@@ -143,17 +139,6 @@ public class jPanelSurvey extends javax.swing.JPanel {
         newFrame.pack();
         newFrame.setVisible(true);
     }//GEN-LAST:event_jButtonAddQuestionActionPerformed
-
-    private void jButtonOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOkActionPerformed
-        survey.setDescription(jTextFieldDescription.getText());
-        survey.setTitle(jTextFieldTitle.getText());
-        try {
-            se.saveSurvey(survey);
-        } catch (SurveyEngineException ex) {
-            System.err.println(ex.getMessage());
-            System.exit(-1);
-        }
-    }//GEN-LAST:event_jButtonOkActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
