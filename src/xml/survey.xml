@@ -19,9 +19,7 @@
             - description represents description of survey
             - non-empty string is required
         -->
-        <description>
-            Tento dotazník je určený pre študentov FI a má dopomôcť k skvalitneniu štúdia.
-        </description>
+        <description>Tento dotazník je určený pre študentov FI a má dopomôcť k skvalitneniu štúdia.</description>
 
         <!--
             - questions represents set of questions in survey
@@ -39,9 +37,7 @@
                     - description represents description of question (question string)
                     - non-empty string is required
                 -->
-                <description>
-                    Ako ste spokojný so štúdiom na FI?
-                </description>
+                <description>Ako ste spokojný so štúdiom na FI?</description>
 
                 <!--
                     - answers represents set of answers in question
@@ -61,9 +57,7 @@
                 </answers>
             </question>
             <question qid="2" type="multiple">
-                <description>
-                    Ktoré programovacie jazyky ovladáte?
-                </description>
+                <description>Ktoré programovacie jazyky ovladáte?</description>
                 <answers>
                     <answer aid="1">C/C++</answer>
                     <answer aid="2">Java</answer>
@@ -76,14 +70,10 @@
     </survey>
     <survey sid="2">
         <title>Predmetová anketa predmetu PB138</title>
-        <description>
-            Tento dotazník má dopomôcť k skvaliteniu prednášok a cvičení predmetu PB138.
-        </description>
+        <description>Tento dotazník má dopomôcť k skvaliteniu prednášok a cvičení predmetu PB138.</description>
         <questions>
             <question qid="1" type="closed">
-                <description>
-                    Ako hodnotíte prednášky na predmete?
-                </description>
+                <description>Ako hodnotíte prednášky na predmete?</description>
                 <answers>
                     <answer aid="1">Veľmi kvalitné</answer>
                     <answer aid="2">Kvalitné</answer>
@@ -93,9 +83,7 @@
                 </answers>
             </question>
             <question qid="2" type="closed">
-                <description>
-                    Ako dlho ste týždenne strávili študovaním predmetu?
-                </description>
+                <description>Ako dlho ste týždenne strávili študovaním predmetu?</description>
                 <answers>
                     <answer aid="1">13 a viac hodín</answer>
                     <answer aid="2">10-12</answer>

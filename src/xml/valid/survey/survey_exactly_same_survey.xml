@@ -6,7 +6,7 @@
         <title>Spokojnosť s FI</title>
         <description>Tento dotazník je určený pre študentov FI a má dopomôcť k skvalitneniu štúdia.</description>
         <questions>
-            <question qid="2" type="closed">
+            <question qid="1" type="closed">
                 <description>Ako ste spokojný so štúdiom na FI?</description>
                 <answers>
                     <answer aid="1">Veľmi spokojný</answer>
@@ -42,7 +42,33 @@
                     <answer aid="5">Úplne nekvalitné</answer>
                 </answers>
             </question>
+            <question qid="2" type="closed">
+                <description>Ako dlho ste týždenne strávili študovaním predmetu?</description>
+                <answers>
+                    <answer aid="1">13 a viac hodín</answer>
+                    <answer aid="2">10-12</answer>
+                    <answer aid="3">6-9</answer>
+                    <answer aid="4">2-5</answer>
+                    <answer aid="5">menej ako hodinu alebo vôbec</answer>
+                </answers>
+            </question>
+        </questions>
+    </survey>
+    <survey sid="3">
+        <title>Predmetová anketa predmetu PB138</title>
+        <description>Tento dotazník má dopomôcť k skvaliteniu prednášok a cvičení predmetu PB138.</description>
+        <questions>
             <question qid="1" type="closed">
+                <description>Ako hodnotíte prednášky na predmete?</description>
+                <answers>
+                    <answer aid="1">Veľmi kvalitné</answer>
+                    <answer aid="2">Kvalitné</answer>
+                    <answer aid="3">Vylepšil by som ich</answer>
+                    <answer aid="4">Nekvalitné</answer>
+                    <answer aid="5">Úplne nekvalitné</answer>
+                </answers>
+            </question>
+            <question qid="2" type="closed">
                 <description>Ako dlho ste týždenne strávili študovaním predmetu?</description>
                 <answers>
                     <answer aid="1">13 a viac hodín</answer>

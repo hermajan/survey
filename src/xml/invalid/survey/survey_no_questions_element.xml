@@ -5,28 +5,6 @@
     <survey sid="1">
         <title>Spokojnosť s FI</title>
         <description>Tento dotazník je určený pre študentov FI a má dopomôcť k skvalitneniu štúdia.</description>
-        <questions>
-            <question qid="2" type="closed">
-                <description>Ako ste spokojný so štúdiom na FI?</description>
-                <answers>
-                    <answer aid="1">Veľmi spokojný</answer>
-                    <answer aid="2">Spokojný</answer>
-                    <answer aid="3">Neutrálny</answer>
-                    <answer aid="4">Nespokojný</answer>
-                    <answer aid="5">Vôbec nespokojný</answer>
-                </answers>
-            </question>
-            <question qid="2" type="multiple">
-                <description>Ktoré programovacie jazyky ovladáte?</description>
-                <answers>
-                    <answer aid="1">C/C++</answer>
-                    <answer aid="2">Java</answer>
-                    <answer aid="3">C#</answer>
-                    <answer aid="4">Ruby</answer>
-                    <answer aid="5">R</answer>
-                </answers>
-            </question>
-        </questions>
     </survey>
     <survey sid="2">
         <title>Predmetová anketa predmetu PB138</title>
@@ -42,7 +20,7 @@
                     <answer aid="5">Úplne nekvalitné</answer>
                 </answers>
             </question>
-            <question qid="1" type="closed">
+            <question qid="2" type="closed">
                 <description>Ako dlho ste týždenne strávili študovaním predmetu?</description>
                 <answers>
                     <answer aid="1">13 a viac hodín</answer>
