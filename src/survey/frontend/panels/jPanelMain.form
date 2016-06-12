@@ -21,8 +21,8 @@
               <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jButtonCreate" pref="182" max="32767" attributes="0"/>
-                  <Component id="jButtonEdit" max="32767" attributes="0"/>
+                  <Component id="jButtonCreateSurvey" pref="182" max="32767" attributes="0"/>
+                  <Component id="jButtonEditSurvey" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -34,9 +34,9 @@
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="jButtonCreate" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonCreateSurvey" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButtonEdit" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonEditSurvey" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -65,20 +65,20 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="jButtonCreate">
+    <Component class="javax.swing.JButton" name="jButtonCreateSurvey">
       <Properties>
         <Property name="text" type="java.lang.String" value="Create survey"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonCreateActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonCreateSurveyActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButtonEdit">
+    <Component class="javax.swing.JButton" name="jButtonEditSurvey">
       <Properties>
         <Property name="text" type="java.lang.String" value="Edit survey"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEditActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEditSurveyActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

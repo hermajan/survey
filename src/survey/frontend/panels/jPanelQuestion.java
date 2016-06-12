@@ -21,7 +21,8 @@ import survey.frontend.models.AnswersTableModel;
  *
  * @author peteru
  */
-public class jPanelAddQuestion extends javax.swing.JPanel {
+public class jPanelQuestion extends javax.swing.JPanel {
+	private static final long serialVersionUID = 1L;
 
     private final Survey survey;
     private final Question question;
@@ -33,7 +34,7 @@ public class jPanelAddQuestion extends javax.swing.JPanel {
      * @param survey
      * @param question
      */
-    public jPanelAddQuestion(Survey survey, Question question) {
+    public jPanelQuestion(Survey survey, Question question) {
         this.survey = survey;
         this.question = question;
         questionCount = this.question.getAnswerSize();
@@ -72,7 +73,7 @@ public class jPanelAddQuestion extends javax.swing.JPanel {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         jButtonAddAnswer = new javax.swing.JButton();
-        jButtonBack = new javax.swing.JButton();
+        jButtonSaveQuestion = new javax.swing.JButton();
         jTextFieldDescription = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableAnswers = new javax.swing.JTable();
@@ -80,17 +81,17 @@ public class jPanelAddQuestion extends javax.swing.JPanel {
         jRadioButtonMultiple = new javax.swing.JRadioButton();
         jRadioButtonClosed = new javax.swing.JRadioButton();
 
-        jButtonAddAnswer.setText("Add Answer");
+        jButtonAddAnswer.setText("Add answer");
         jButtonAddAnswer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAddAnswerActionPerformed(evt);
             }
         });
 
-        jButtonBack.setText("Save");
-        jButtonBack.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSaveQuestion.setText("Save");
+        jButtonSaveQuestion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonBackActionPerformed(evt);
+                jButtonSaveQuestionActionPerformed(evt);
             }
         });
 
@@ -124,17 +125,22 @@ public class jPanelAddQuestion extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButtonBack, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButtonSaveQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jTextFieldDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 290, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addGap(31, 31, 31)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jRadioButtonMultiple)
                             .addComponent(jRadioButtonClosed)
-                            .addComponent(jButtonAddAnswer))))
+                            .addComponent(jButtonAddAnswer)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jTextFieldDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -151,7 +157,7 @@ public class jPanelAddQuestion extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                        .addComponent(jButtonBack))
+                        .addComponent(jButtonSaveQuestion))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jRadioButtonClosed)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -161,7 +167,7 @@ public class jPanelAddQuestion extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
+    private void jButtonSaveQuestionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveQuestionActionPerformed
         if (jRadioButtonMultiple.isSelected()){
             question.setQuestionType(QuestionType.MULTIPLE);
         }else{
@@ -185,7 +191,7 @@ public class jPanelAddQuestion extends javax.swing.JPanel {
                 topFrame.dispose();
             }
         }
-    }//GEN-LAST:event_jButtonBackActionPerformed
+    }//GEN-LAST:event_jButtonSaveQuestionActionPerformed
 
     private void jButtonAddAnswerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddAnswerActionPerformed
         JTextField field1 = new JTextField();
@@ -194,10 +200,11 @@ public class jPanelAddQuestion extends javax.swing.JPanel {
         panel.add(new JLabel("Answer"));
         panel.add(field1);   
         topFrame.setEnabled(false);
+		
         int result = JOptionPane.showConfirmDialog(this, panel, "Add Answer",
             JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
         if (result == JOptionPane.OK_OPTION) {
-            if(field1.getText().equals("")){
+            if(field1.getText().isEmpty()){
                 JOptionPane.showMessageDialog(this, "Empty answer!", "Error",
                                     JOptionPane.ERROR_MESSAGE);
             }else{
@@ -206,14 +213,13 @@ public class jPanelAddQuestion extends javax.swing.JPanel {
                 model.addAnswerToTable(questionCount, field1.getText());
                 model.fireTableDataChanged();
                 questionCount += 1;
-                topFrame.setEnabled(true);
                 updateTable();
             }
         } else {
-            System.out.println("Cancelled");
+			  System.out.println("Cancelled adding of answer.");
         }
-        
-        
+		
+        topFrame.setEnabled(true);
     }//GEN-LAST:event_jButtonAddAnswerActionPerformed
 
     private void jRadioButtonClosedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonClosedActionPerformed
@@ -228,7 +234,7 @@ public class jPanelAddQuestion extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButtonAddAnswer;
-    private javax.swing.JButton jButtonBack;
+    private javax.swing.JButton jButtonSaveQuestion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JRadioButton jRadioButtonClosed;
     private javax.swing.JRadioButton jRadioButtonMultiple;

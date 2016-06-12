@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
@@ -24,6 +25,7 @@ import survey.frontend.models.QuestionTableModel;
  * @author peteru
  */
 public class jPanelSurvey extends javax.swing.JPanel {
+	private static final long serialVersionUID = 1L;
 
     private final SurveyEngine se;
     private final Survey survey;
@@ -68,7 +70,7 @@ public class jPanelSurvey extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButtonOk = new javax.swing.JButton();
+        jButtonSaveSurvey = new javax.swing.JButton();
         jButtonAddQuestion = new javax.swing.JButton();
         jLabelSurveyTitle = new javax.swing.JLabel();
         jLabelDescription = new javax.swing.JLabel();
@@ -77,16 +79,16 @@ public class jPanelSurvey extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableQuestions = new javax.swing.JTable();
         jLabelQuestions = new javax.swing.JLabel();
-        jButtonEdit = new javax.swing.JButton();
+        jButtonEditQuestion = new javax.swing.JButton();
 
-        jButtonOk.setText("Save Survey");
-        jButtonOk.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSaveSurvey.setText("Save survey");
+        jButtonSaveSurvey.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonOkActionPerformed(evt);
+                jButtonSaveSurveyActionPerformed(evt);
             }
         });
 
-        jButtonAddQuestion.setText("Add Question");
+        jButtonAddQuestion.setText("Add question");
         jButtonAddQuestion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAddQuestionActionPerformed(evt);
@@ -102,10 +104,10 @@ public class jPanelSurvey extends javax.swing.JPanel {
 
         jLabelQuestions.setText("Questions");
 
-        jButtonEdit.setText("Edit Question");
-        jButtonEdit.addActionListener(new java.awt.event.ActionListener() {
+        jButtonEditQuestion.setText("Edit question");
+        jButtonEditQuestion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEditActionPerformed(evt);
+                jButtonEditQuestionActionPerformed(evt);
             }
         });
 
@@ -127,9 +129,9 @@ public class jPanelSurvey extends javax.swing.JPanel {
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addGroup(layout.createSequentialGroup()
                                             .addGap(121, 121, 121)
-                                            .addComponent(jButtonEdit)
+                                            .addComponent(jButtonEditQuestion)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jButtonOk, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jButtonSaveSurvey, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jLabelQuestions))
@@ -156,18 +158,19 @@ public class jPanelSurvey extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonOk)
+                    .addComponent(jButtonSaveSurvey)
                     .addComponent(jButtonAddQuestion)
-                    .addComponent(jButtonEdit))
+                    .addComponent(jButtonEditQuestion))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAddQuestionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddQuestionActionPerformed
-        JFrame newFrame = new JFrame();
+        JFrame newFrame = new JFrame("Add question");
+		newFrame.setIconImage(new ImageIcon("src/web/favicon.png").getImage());
         newFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         newFrame.setLayout(new BorderLayout());
-        newFrame.add(new jPanelAddQuestion(survey, new Question(-1, "", QuestionType.CLOSED)), BorderLayout.CENTER);
+        newFrame.add(new jPanelQuestion(survey, new Question(-1, "", QuestionType.CLOSED)), BorderLayout.CENTER);
         JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
         newFrame.setLocation(topFrame.getX(),topFrame.getY());
         newFrame.addWindowListener(new WindowAdapter() {
@@ -182,7 +185,7 @@ public class jPanelSurvey extends javax.swing.JPanel {
         newFrame.setVisible(true);
     }//GEN-LAST:event_jButtonAddQuestionActionPerformed
 
-    private void jButtonOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOkActionPerformed
+    private void jButtonSaveSurveyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveSurveyActionPerformed
         survey.setDescription(jTextFieldDescription.getText());
         survey.setTitle(jTextFieldTitle.getText());
         try {
@@ -194,16 +197,17 @@ public class jPanelSurvey extends javax.swing.JPanel {
         
         JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(this);        
         topFrame.dispose();
-    }//GEN-LAST:event_jButtonOkActionPerformed
+    }//GEN-LAST:event_jButtonSaveSurveyActionPerformed
 
-    private void jButtonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditActionPerformed
+    private void jButtonEditQuestionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditQuestionActionPerformed
         try {    
             QuestionTableModel model = (QuestionTableModel) jTableQuestions.getModel();
             Question q = model.getQuestionOnRow(jTableQuestions.getSelectedRow());
-            JFrame newFrame = new JFrame();
+            JFrame newFrame = new JFrame("Edit question");
+			newFrame.setIconImage(new ImageIcon("src/web/favicon.png").getImage());
             newFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             newFrame.setLayout(new BorderLayout());
-            newFrame.add(new jPanelAddQuestion(survey, q), BorderLayout.CENTER);
+            newFrame.add(new jPanelQuestion(survey, q), BorderLayout.CENTER);
             JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
             newFrame.setLocation(topFrame.getX(),topFrame.getY());
             newFrame.addWindowListener(new WindowAdapter() {
@@ -220,13 +224,13 @@ public class jPanelSurvey extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Please select question first!", "Error",
                                     JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_jButtonEditActionPerformed
+    }//GEN-LAST:event_jButtonEditQuestionActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAddQuestion;
-    private javax.swing.JButton jButtonEdit;
-    private javax.swing.JButton jButtonOk;
+    private javax.swing.JButton jButtonEditQuestion;
+    private javax.swing.JButton jButtonSaveSurvey;
     private javax.swing.JLabel jLabelDescription;
     private javax.swing.JLabel jLabelQuestions;
     private javax.swing.JLabel jLabelSurveyTitle;

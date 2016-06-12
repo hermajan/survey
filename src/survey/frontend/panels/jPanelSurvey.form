@@ -30,9 +30,9 @@
                                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                       <Group type="102" attributes="0">
                                           <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
-                                          <Component id="jButtonEdit" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jButtonEditQuestion" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="jButtonOk" min="-2" pref="125" max="-2" attributes="0"/>
+                                          <Component id="jButtonSaveSurvey" min="-2" pref="125" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jScrollPane1" min="-2" pref="574" max="-2" attributes="0"/>
@@ -70,9 +70,9 @@
               <Component id="jScrollPane1" min="-2" pref="213" max="-2" attributes="0"/>
               <EmptySpace pref="36" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButtonOk" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButtonSaveSurvey" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButtonAddQuestion" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButtonEdit" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButtonEditQuestion" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -80,17 +80,17 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="jButtonOk">
+    <Component class="javax.swing.JButton" name="jButtonSaveSurvey">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Save Survey"/>
+        <Property name="text" type="java.lang.String" value="Save survey"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonOkActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSaveSurveyActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonAddQuestion">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Add Question"/>
+        <Property name="text" type="java.lang.String" value="Add question"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonAddQuestionActionPerformed"/>
@@ -122,6 +122,12 @@
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="new QuestionTableModel()" type="code"/>
             </Property>
+            <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+              <TableColumnModel selectionModel="0"/>
+            </Property>
+            <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+              <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+            </Property>
           </Properties>
         </Component>
       </SubComponents>
@@ -131,12 +137,12 @@
         <Property name="text" type="java.lang.String" value="Questions"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButtonEdit">
+    <Component class="javax.swing.JButton" name="jButtonEditQuestion">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Edit Question"/>
+        <Property name="text" type="java.lang.String" value="Edit question"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEditActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEditQuestionActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

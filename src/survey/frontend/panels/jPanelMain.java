@@ -6,12 +6,15 @@
 package survey.frontend.panels;
 
 import java.awt.BorderLayout;
+import java.awt.HeadlessException;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.table.TableColumn;
 import survey.backend.SurveyEngine;
+import survey.backend.SurveyEngineException;
 import survey.backend.entities.Survey;
 import survey.frontend.models.SurveyTableModel;
 
@@ -51,8 +54,8 @@ public class jPanelMain extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableSurveys = new javax.swing.JTable();
-        jButtonCreate = new javax.swing.JButton();
-        jButtonEdit = new javax.swing.JButton();
+        jButtonCreateSurvey = new javax.swing.JButton();
+        jButtonEditSurvey = new javax.swing.JButton();
 
         jTableSurveys.setModel(new SurveyTableModel());
         jScrollPane1.setViewportView(jTableSurveys);
@@ -61,17 +64,17 @@ public class jPanelMain extends javax.swing.JPanel {
         columnA.setMinWidth(50);
         columnA.setMaxWidth(50);
 
-        jButtonCreate.setText("Create survey");
-        jButtonCreate.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCreateSurvey.setText("Create survey");
+        jButtonCreateSurvey.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCreateActionPerformed(evt);
+                jButtonCreateSurveyActionPerformed(evt);
             }
         });
 
-        jButtonEdit.setText("Edit survey");
-        jButtonEdit.addActionListener(new java.awt.event.ActionListener() {
+        jButtonEditSurvey.setText("Edit survey");
+        jButtonEditSurvey.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEditActionPerformed(evt);
+                jButtonEditSurveyActionPerformed(evt);
             }
         });
 
@@ -84,8 +87,8 @@ public class jPanelMain extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButtonCreate, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
-                    .addComponent(jButtonEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButtonCreateSurvey, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
+                    .addComponent(jButtonEditSurvey, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -94,17 +97,18 @@ public class jPanelMain extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonCreate)
+                        .addComponent(jButtonCreateSurvey)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonEdit))
+                        .addComponent(jButtonEditSurvey))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCreateActionPerformed
+    private void jButtonCreateSurveyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCreateSurveyActionPerformed
         Survey s = new Survey(-1, "", "", null);
-        JFrame newFrame = new JFrame();
+        JFrame newFrame = new JFrame("Create survey");
+		newFrame.setIconImage(new ImageIcon("src/web/favicon.png").getImage());
         newFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         newFrame.setLayout(new BorderLayout());
         newFrame.add(new jPanelSurvey(se,s), BorderLayout.CENTER);
@@ -121,14 +125,15 @@ public class jPanelMain extends javax.swing.JPanel {
         topFrame.setEnabled(false);
         newFrame.pack();
         newFrame.setVisible(true);
-    }//GEN-LAST:event_jButtonCreateActionPerformed
+    }//GEN-LAST:event_jButtonCreateSurveyActionPerformed
 
-    private void jButtonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditActionPerformed
+    private void jButtonEditSurveyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditSurveyActionPerformed
         try {
             SurveyTableModel model = (SurveyTableModel) jTableSurveys.getModel();
             Integer sid = model.getSurveyOnRow(jTableSurveys.getSelectedRow()).getSid();
             Survey s = se.getSurvey(sid);
-            JFrame newFrame = new JFrame();
+            JFrame newFrame = new JFrame("Edit survey");
+			newFrame.setIconImage(new ImageIcon("src/web/favicon.png").getImage());
             newFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             newFrame.setLayout(new BorderLayout());
             newFrame.add(new jPanelSurvey(se,s), BorderLayout.CENTER);
@@ -145,16 +150,15 @@ public class jPanelMain extends javax.swing.JPanel {
             });
             topFrame.setEnabled(false);
             newFrame.setVisible(true);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Please select survey first!", "Error",
-                                    JOptionPane.ERROR_MESSAGE);
+        } catch (SurveyEngineException|HeadlessException e) {
+            JOptionPane.showMessageDialog(this, "Please select survey first!", "Error", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_jButtonEditActionPerformed
+    }//GEN-LAST:event_jButtonEditSurveyActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonCreate;
-    private javax.swing.JButton jButtonEdit;
+    private javax.swing.JButton jButtonCreateSurvey;
+    private javax.swing.JButton jButtonEditSurvey;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableSurveys;
     // End of variables declaration//GEN-END:variables
