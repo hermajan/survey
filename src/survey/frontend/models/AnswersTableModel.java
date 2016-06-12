@@ -1,13 +1,9 @@
-package pokus2.frontend.models;
+package survey.frontend.models;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import javax.swing.table.AbstractTableModel;
 
 /**
@@ -15,7 +11,18 @@ import javax.swing.table.AbstractTableModel;
  * @author peteru
  */
 public class AnswersTableModel extends AbstractTableModel{
-    private final HashMap<Integer, String> answers = new HashMap<>();
+    class Answer{
+        private final int aid;
+        private final String answer;
+
+        public Answer(int aid, String answer) {
+            this.aid = aid;
+            this.answer = answer;
+        }
+ 
+    }
+    
+    private final List<Answer> answers = new ArrayList<>();
 
     public AnswersTableModel() {
     }
@@ -32,12 +39,12 @@ public class AnswersTableModel extends AbstractTableModel{
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        String answer = answers.get(rowIndex);
+        Answer answer = answers.get(rowIndex);
         switch(columnIndex){
             case 0:
-                return rowIndex;
+                return answer.aid;
             case 1:
-                return answer;
+                return answer.answer;
             default:
                 throw new IllegalArgumentException("columnIndex");
         }
@@ -47,7 +54,7 @@ public class AnswersTableModel extends AbstractTableModel{
     public String getColumnName(int columnIndex) {
         switch (columnIndex) {
             case 0:
-                return "Aid";
+                return "ID";
             case 1:
                 return "Answer";
             default:
@@ -55,14 +62,14 @@ public class AnswersTableModel extends AbstractTableModel{
         }
     }
     
-    public void addAnswerToTable(String answer){
-        answers.put(answers.size()+1, answer);
-        fireTableCellUpdated(answers.size(), answers.size());
+    public void addAnswerToTable(int aid, String answer){
+        answers.add(new Answer(aid, answer));
+        fireTableCellUpdated(answers.size(), getColumnCount());
     }
     
-    public String getAnswerOnRow(int rowIndex){
-        String answer = answers.get(rowIndex);
-        return answer;
+    public String getAnswerStringOnRow(int rowIndex){
+        Answer answer = answers.get(rowIndex);
+        return answer.answer;
     }
 
     @Override
@@ -74,6 +81,16 @@ public class AnswersTableModel extends AbstractTableModel{
             default:
                 throw new IllegalArgumentException("columnIndex");
         }
+    }
+    
+    public void recreateQuestions(HashMap<Integer,String> answers){
+        this.answers.clear();
+        
+        for (Map.Entry<Integer, String> entry : answers.entrySet()) {
+            this.answers.add(new Answer(entry.getKey(), entry.getValue()));  
+        }
+           
+        fireTableCellUpdated(answers.size(), getColumnCount());
     }
     
 }

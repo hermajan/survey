@@ -5,7 +5,7 @@ import java.util.Set;
 
 public class Question {
         
-    private final int qid;
+    private int qid;
     private String description;
     private QuestionType questionType;
     private HashMap<Integer, String> answers = new HashMap<>();
@@ -16,7 +16,7 @@ public class Question {
         this.questionType = qt;
     }
     
-    public int getSize(){
+    public int getAnswerSize(){
         return answers.size();
     }
     
@@ -59,6 +59,11 @@ public class Question {
     public void setAnswers(HashMap<Integer, String> answers) {
         this.answers = answers;
     }
+
+    public void setQid(int qid) {
+        this.qid = qid;
+    }
+    
     
     
 }

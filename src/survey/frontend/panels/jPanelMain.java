@@ -37,6 +37,7 @@ public class jPanelMain extends javax.swing.JPanel {
     private void updateTable(){
         SurveyTableModel model  = (SurveyTableModel) jTableSurveys.getModel();
         model.recreateSurveys(se.getSurveysIdsTitles());
+        model.fireTableDataChanged();
     }
 
     /**
@@ -109,7 +110,7 @@ public class jPanelMain extends javax.swing.JPanel {
         newFrame.add(new jPanelSurvey(se,s), BorderLayout.CENTER);
         JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
         newFrame.setLocation(topFrame.getX(),topFrame.getY());
-        newFrame.pack();
+        
         newFrame.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent windowEvent) {
@@ -118,6 +119,7 @@ public class jPanelMain extends javax.swing.JPanel {
             }
         });
         topFrame.setEnabled(false);
+        newFrame.pack();
         newFrame.setVisible(true);
     }//GEN-LAST:event_jButtonCreateActionPerformed
 
@@ -138,6 +140,7 @@ public class jPanelMain extends javax.swing.JPanel {
                 public void windowClosing(java.awt.event.WindowEvent windowEvent) {
                     updateTable();
                     topFrame.setEnabled(true);
+                    
                 }
             });
             topFrame.setEnabled(false);

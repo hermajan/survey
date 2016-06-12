@@ -41,5 +41,18 @@ public class Survey {
 
     public void setQuestions(List<Question> questions) {
         this.questions = questions;
-    }     
+    }  
+    
+    public void addQuestion(Question question){
+        this.questions.add(question);
+    }
+    
+    public void editQuestion(Question question){
+        for(int i = 0; i < questions.size(); i++){
+            if(questions.get(i).getQid() == question.getQid()){
+                questions.set(i, question);
+                break;
+            }
+        }
+    }
 }

@@ -7,7 +7,7 @@ import survey.backend.entities.Question;
  
 
 public class QuestionTableModel extends AbstractTableModel{
-    private final List<Question> questions = new ArrayList<>();
+    private List<Question> questions = new ArrayList<>();
  
     public QuestionTableModel() {
     }
@@ -19,7 +19,7 @@ public class QuestionTableModel extends AbstractTableModel{
  
     @Override
     public int getColumnCount() {
-        return 3;
+        return 2;
     }
  
     @Override
@@ -30,21 +30,31 @@ public class QuestionTableModel extends AbstractTableModel{
                 return question.getQid();
             case 1:
                 return question.getDescription();
-            case 2:
-                return question.getQuestionType();
             default:
                 throw new IllegalArgumentException("columnIndex");
         }
     }
    
+    @Override
+    public String getColumnName(int columnIndex) {
+        switch (columnIndex) {
+            case 0:
+                return "Qid";
+            case 1:
+                return "Question";
+            default:
+                throw new IllegalArgumentException("columnIndex");
+        }
+    }
+    
     public Question getQuestionOnRow(int rowIndex){
         Question question = questions.get(rowIndex);
         return question;
     }
-   
+    
     public void addQuestionToTable(Question question){
         questions.add(question);
-        fireTableCellUpdated(question.getSize(), question.getSize());
+        fireTableCellUpdated(question.getAnswerSize(), question.getAnswerSize());
     }
  
     @Override
@@ -58,5 +68,11 @@ public class QuestionTableModel extends AbstractTableModel{
                 throw new IllegalArgumentException("columnIndex");
         }
     }
+    
+    public void recreateQuestions(List<Question> questions){
+        this.questions = questions;     
+        fireTableCellUpdated(questions.size(), getColumnCount());
+    }
+    
    
 }
