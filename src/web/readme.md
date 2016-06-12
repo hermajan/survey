@@ -5,5 +5,8 @@ Web version of Survey is runnable only through [Apache Tomcat](https://tomcat.ap
 
 ### Instalation
 * Download `survey_web.war` archive with the web interface from [Releases](https://github.com/hermajan/survey/releases)
-* Upload content of the archive to the Apache Tomcat server
-* Open the `index.html` file in the browser
+* Upload content of the archive to the Apache Tomcat server to the `webapps` folder
+* Start the Tomcat server with script 
+	* `bin/startup.sh` (on Linux)
+	* `bin/startup.bat` (on Windows)
+* Open the `index.html` file in the browser with URL of your server
