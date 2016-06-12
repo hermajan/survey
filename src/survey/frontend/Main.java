@@ -15,7 +15,7 @@ public class Main {
         SurveyEngine surveyEngine = null;
         
         try {
-            surveyEngine = new SurveyEngine("test.xml");
+            surveyEngine = new SurveyEngine("src/xml/survey.xml");
         } catch (SurveyEngineException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
             System.exit(-1);
