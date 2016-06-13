@@ -141,7 +141,7 @@ public class SurveyEngine {
     * found for it.
     * 
     * @param survey survey information to be saved
-     * @throws pokus2.backend.SurveyEngineException 
+    * @throws SurveyEngineException 
     */
     public void saveSurvey(Survey survey) throws SurveyEngineException{
         surveyValidation(survey);
