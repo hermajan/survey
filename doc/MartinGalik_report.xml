@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE article>
+<article xmlns="http://docbook.org/ns/docbook" version="5.0">
+    <info>
+        <title>Survey</title>
+    </info>
+    <section xml:id="survey">
+        <section xml:id="MartinGalik">
+            <title>Martin Galik</title>
+            <para>
+                I was member of four-member team. Together we did our best to
+                complete our assignment - survey management system. I was
+                responsible for a Java application part, which could be used by
+                the front end side to work with the database.
+            </para>
+            <para>
+                I worked with Jakub Gavlas and Peter Petkanic to create a
+                user friendly graphic user interface for a survey management
+                system. Used to create new surveys and edit already existing
+                ones.
+            </para>
+        </section>
+        <section xml:id="surveyengine.java">
+            <title>SurveyEngine.java</title>
+            <para>
+                This class works with the xml database, namely the file
+                <emphasis>survey.xml</emphasis>.
+            </para>
+            <para>
+                Class can load a survey from the file and return it, load a map
+                of surveys and their IDs or save a file that is given to it.
+                File is always validated against <emphasis>schema.xsd</emphasis>
+                to make sure it's still valid. If a survey is being saved, it's
+                also checked to be correct before it's saved into the file.
+            </para>
+        </section>
+        <section xml:id="surveyengineexception.java">
+            <title>SurveyEngineException.java</title>
+            <para>
+                Simple exception thrown if anything in 
+                <emphasis>SurveyEngine.java</emphasis> goes wrong.
+            </para>
+        </section>
+        <section xml:id="survey.java">
+            <title>Survey.java</title>
+            <para>
+                A simple back end entity used to store information about a
+                single survey. Returned from <emphasis>SurveyEngine.java
+                </emphasis> when a survey is opened, also passed to the engine
+                when saving a survey.
+            </para>
+        </section>
+        <section xml:id="question.java">
+            <title>Question.java</title>
+            <para>
+                A simple back end entity used to store information about a 
+                single question within a survey.
+            </para>
+            <para>
+                Uses <emphasis>QuestionType.java</emphasis>, which is
+                enumeration to determine the type of a question.
+            </para>
+        </section>
+    </section>
+</article>
