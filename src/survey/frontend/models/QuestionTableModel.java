@@ -42,7 +42,7 @@ public class QuestionTableModel extends AbstractTableModel{
     public String getColumnName(int columnIndex) {
         switch (columnIndex) {
             case 0:
-                return "Qid";
+                return "ID";
             case 1:
                 return "Question";
             default:

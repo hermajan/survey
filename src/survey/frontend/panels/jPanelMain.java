@@ -150,7 +150,7 @@ public class jPanelMain extends javax.swing.JPanel {
             Integer sid = model.getSurveyOnRow(jTableSurveys.getSelectedRow()).getSid();
             
             surveyEditorInit(new jPanelSurvey(se,se.getSurvey(sid)), "Edit survey");
-        } catch (SurveyEngineException | HeadlessException | ArrayIndexOutOfBoundsException e) {
+        } catch (HeadlessException | ArrayIndexOutOfBoundsException e) {
             JOptionPane.showMessageDialog(this, "Please select survey first!", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButtonEditSurveyActionPerformed

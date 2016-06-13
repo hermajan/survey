@@ -55,7 +55,7 @@ public class SurveyEngine {
        }
        
        try {
-           SchemaValidator validator = new SchemaValidator("survey.xsd");
+           SchemaValidator validator = new SchemaValidator("src/xml/survey.xsd");
            validator.validate(this.filePath);
        } catch (SAXException | ParserConfigurationException | IOException e) {
            throw new SurveyEngineException("Validation failed!", e);

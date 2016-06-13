@@ -10,8 +10,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+import javax.swing.table.TableColumn;
 import survey.backend.entities.Question;
 import survey.backend.entities.QuestionType;
 import survey.backend.entities.Survey;
@@ -102,6 +104,10 @@ public class jPanelQuestion extends javax.swing.JPanel {
 
         jTableAnswers.setModel(new AnswersTableModel());
         jScrollPane1.setViewportView(jTableAnswers);
+        jTableAnswers.setAutoResizeMode( JTable.AUTO_RESIZE_ALL_COLUMNS );
+        TableColumn columnA = jTableAnswers.getColumn("ID");
+        columnA.setMinWidth(50);
+        columnA.setMaxWidth(50);
 
         jLabel1.setText("Question");
 
@@ -141,7 +147,7 @@ public class jPanelQuestion extends javax.swing.JPanel {
                     .addComponent(jTextFieldDescription)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(15, 415, Short.MAX_VALUE))
+                        .addGap(15, 406, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -169,7 +175,7 @@ public class jPanelQuestion extends javax.swing.JPanel {
                         .addComponent(jRadioButtonClosed)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jRadioButtonMultiple)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
                         .addComponent(jButtonBack))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)

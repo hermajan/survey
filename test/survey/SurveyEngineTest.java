@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package survey.backend;
+package survey;
 
-import java.io.IOException;
-import survey.backend.entities.Question;
 
+import survey.backend.SurveyEngine;
+import survey.backend.SurveyEngineException;
 import survey.backend.entities.Survey;
 
 /**
@@ -18,8 +18,8 @@ public class SurveyEngineTest {
     public static void main(String[] args) {
         SurveyEngine se = null;
         try {
-            se = new SurveyEngine("test.xml");
-        } catch (IOException e) {
+            se = new SurveyEngine("survey.xml");
+        } catch (SurveyEngineException e) {
             System.err.println(e.getMessage());
             System.exit(-1);
         }
