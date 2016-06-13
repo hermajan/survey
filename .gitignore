@@ -2,6 +2,7 @@ build/
 nbproject/
 .nbproject-*/
 .idea
+nbbuild.xml
 
 *.class
 
