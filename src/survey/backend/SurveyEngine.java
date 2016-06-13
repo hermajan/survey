@@ -42,7 +42,7 @@ public class SurveyEngine {
     * Constructor. Opens already existing valid xml survey file.
     * 
     * @param filePath path to the file to be opened 
-     * @throws pokus2.backend.SurveyEngineException 
+    * @throws SurveyEngineException 
     */
    public SurveyEngine(String filePath) throws SurveyEngineException {
        this.filePath = filePath;
