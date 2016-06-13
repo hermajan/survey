@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pokus2.backend;
+package survey.backend;
 
 import java.io.IOException;
-import pokus2.backend.entities.Question;
+import survey.backend.entities.Question;
 
-import pokus2.backend.entities.Survey;
+import survey.backend.entities.Survey;
 
 /**
  *
