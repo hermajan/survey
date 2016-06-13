@@ -1,6 +1,6 @@
-package survey.backend;
+package pokus2.backend;
 
-import survey.backend.entities.Question;
+import pokus2.backend.entities.Question;
 import java.io.File;
 import java.io.IOException;
 import static java.lang.Integer.max;
@@ -23,9 +23,15 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-import survey.backend.entities.QuestionType;
-import survey.backend.entities.Survey;
+import pokus2.backend.entities.QuestionType;
+import pokus2.backend.entities.Survey;
 
+
+/**
+ * Class works with an xml file.
+ * 
+ * @author Martin
+ */
 public class SurveyEngine {
     
     private final Document doc;
@@ -36,7 +42,7 @@ public class SurveyEngine {
     * Constructor. Opens already existing valid xml survey file.
     * 
     * @param filePath path to the file to be opened 
-     * @throws survey.backend.SurveyEngineException 
+     * @throws pokus2.backend.SurveyEngineException 
     */
    public SurveyEngine(String filePath) throws SurveyEngineException {
        this.filePath = filePath;
@@ -49,14 +55,19 @@ public class SurveyEngine {
        }
        
        try {
-           SchemaValidator validator = new SchemaValidator("src/xml/survey.xsd");
+           SchemaValidator validator = new SchemaValidator("survey.xsd");
            validator.validate(this.filePath);
        } catch (SAXException | ParserConfigurationException | IOException e) {
            throw new SurveyEngineException("Validation failed!", e);
        }
    }
    
-   
+   /**
+    * Finds a surveyElement by it's id. If not found exception is thrown.
+    * 
+    * @param surveyId id of the survey to be found
+    * @return 
+    */
    private Element getSurveyElementBySid(int surveyId){
         NodeList surveys = doc.getElementsByTagName("survey");
 
@@ -77,18 +88,11 @@ public class SurveyEngine {
     * 
     * @param surveyId ID of the element
     * @return Survey class with all element's contents loaded
-     * @throws survey.backend.SurveyEngineException
     */
-   public Survey getSurvey(int surveyId) throws SurveyEngineException {
-        Element survey = null;
-       
-        try { 
-            survey = getSurveyElementBySid(surveyId);
-        } catch (NullPointerException e) {
-            throw new SurveyEngineException(e.getMessage());
-        }
-        
-        try {    
+   public Survey getSurvey(int surveyId) {
+        try {
+            Element survey = getSurveyElementBySid(surveyId);
+            
             List<Question> questions = new ArrayList<>();
             
             //get Questions of survey
@@ -126,7 +130,7 @@ public class SurveyEngine {
                     survey.getElementsByTagName("description").item(0).getTextContent(), 
                     questions);
         } catch (NumberFormatException | DOMException e) {
-            throw new SurveyEngineException(e.getMessage());
+            throw e;
         }
    }
    
@@ -137,7 +141,7 @@ public class SurveyEngine {
     * found for it.
     * 
     * @param survey survey information to be saved
-     * @throws survey.backend.SurveyEngineException 
+     * @throws pokus2.backend.SurveyEngineException 
     */
     public void saveSurvey(Survey survey) throws SurveyEngineException{
         surveyValidation(survey);
@@ -146,11 +150,14 @@ public class SurveyEngine {
         NodeList surveysElements = surveysElement.getElementsByTagName("survey");
         Element surveyElement;
         
+        //try to find survey, if found delete it
         int sid = survey.getSid();
         try {
             surveyElement = getSurveyElementBySid(sid);
             surveysElement.removeChild(surveyElement);
         }
+        
+        //if not found, find a new id for the survey
         catch(NullPointerException e) {
             int maxId = 0;
             for (int i = 0; i < surveysElements.getLength(); i++) {
@@ -160,6 +167,7 @@ public class SurveyEngine {
             sid = ++maxId;
         }
         
+        //create a new element and add title and description
         surveyElement = doc.createElement("survey");
         surveyElement.setAttribute("sid", Integer.toString(sid));
         Element titleElement = doc.createElement("title");
@@ -169,6 +177,7 @@ public class SurveyEngine {
         descriptionElement.setTextContent(survey.getDescription());
         surveyElement.appendChild(descriptionElement);
         
+        //add questions
         Element questionsElement = doc.createElement("questions");
         for (Question question: survey.getQuestions()) {
             Element questionElement = doc.createElement("question");
@@ -191,6 +200,7 @@ public class SurveyEngine {
             
             Element answersElement = doc.createElement("answers");
             
+            //add answers
             for(int aid: question.getAnswerIDs()) {
                 Element answerElement = doc.createElement("answer");
                 answerElement.setAttribute("aid", Integer.toString(aid));
@@ -205,6 +215,7 @@ public class SurveyEngine {
         surveyElement.appendChild(questionsElement);
         surveysElement.appendChild(surveyElement);
         
+        //save the xml document
         {
             try {
                 TransformerFactory tFactory = TransformerFactory.newInstance();
@@ -240,6 +251,14 @@ public class SurveyEngine {
        return surveys;
     }
     
+    
+    /**
+     * Takes a survey class to be exported into xml file and checks it's 
+     * validity.
+     * 
+     * @param survey class to be saved
+     * @throws SurveyEngineException 
+     */
     private void surveyValidation(Survey survey) throws SurveyEngineException {
         if ("".equals(survey.getTitle())) {
             throw new SurveyEngineException("Survey title is empty or null");
@@ -259,6 +278,12 @@ public class SurveyEngine {
         }
     }
     
+    /**
+     * Checks validity of question class to be exported.
+     * 
+     * @param question class to be exported
+     * @throws SurveyEngineException 
+     */
     private void questionValidation(Question question) throws SurveyEngineException {
         if ("".equals(question.getDescription())) {
             throw new SurveyEngineException("Question description empty or null");

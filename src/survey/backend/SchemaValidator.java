@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package survey.backend;
+package pokus2.backend;
 
 import java.io.File;
 import java.io.IOException;
@@ -20,8 +20,7 @@ import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 
 /**
- *
- * @author peteru
+ * @author Peter Petkanic
  */
 public class SchemaValidator {
     
@@ -69,6 +68,15 @@ public class SchemaValidator {
 
     }
     
+    
+    /**
+     * Validates xml file, if incorect, exception is thrown.
+     * 
+     * @param xmlFilename
+     * @return true if file is correct
+     * @throws IOException
+     * @throws SAXException 
+     */
     public boolean validate(String xmlFilename) throws IOException, SAXException{
         try {
             docBuilder.parse(new File(xmlFilename));

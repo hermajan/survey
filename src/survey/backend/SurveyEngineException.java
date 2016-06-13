@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package survey.backend;
+package pokus2.backend;
 
 /**
- *
- * @author peteru
+ * Exception used in SurveyEngine.
+ * 
+ * @author Martin
  */
 public class SurveyEngineException extends Exception{
 
