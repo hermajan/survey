@@ -15,7 +15,6 @@ import survey.backend.entities.Survey;
 import survey.frontend.models.SurveyTableModel;
 
 /**
- *
  * @author Peter Petkanič/433422
  */
 public class jPanelMain extends javax.swing.JPanel {
@@ -23,7 +22,7 @@ public class jPanelMain extends javax.swing.JPanel {
     private final SurveyEngine se;
     
     /**
-     * 
+     * Constructor
      * @param se
      */
     public jPanelMain(SurveyEngine se) {
@@ -32,6 +31,9 @@ public class jPanelMain extends javax.swing.JPanel {
         updateTable();
     }
     
+    /**
+     * Recreating table of Surveys
+     */
     private void updateTable(){
         SurveyTableModel model  = (SurveyTableModel) jTableSurveys.getModel();
         model.recreateSurveys(se.getSurveysIdsTitles());
@@ -97,20 +99,25 @@ public class jPanelMain extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButtonCreateSurvey)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonEditSurvey)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonExit))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Starts new frame for Survey editing
+     * @param panel
+     * @param frameName 
+     */
     private void surveyEditorInit(JPanel panel, String frameName){
         JFrame newFrame = new JFrame(frameName);
         JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
