@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE article>
+<article xmlns="http://docbook.org/ns/docbook" version="5.0">
+    <info>
+        <title>Survey</title>
+    </info>
+    <section xml:id="jakub-gavlas">
+        <title>Jakub Gavlas</title>
+        <para>
+            My task in this group project - survey management system - was to
+            create basic Desktop interface for creating new surveys and also 
+            editing already existing ones.
+        </para>
+    </section>
+    <section xml:id="survey">
+        <title>Survey</title>            
+        <section xml:id="my-contribution">
+          <title>My contribution</title>
+            <para>
+                Together with Peter Petkanic and Martin Galik we did our best
+                to create well sctructured and good functioning application 
+                with user friendly interface. 
+            </para>
+            <para>
+                I coded some functionality of <emphasis>jPanelQuestion.java</emphasis>
+                and created table models such as <emphasis>SurveyTableModel.java</emphasis>,
+                <emphasis>QuestionTableModel.java</emphasis>. 
+            </para>
+            <section xml:id="table-models">
+                <title>tableModels</title>
+                <para>
+                    This classes are used for working with jTables in <emphasis>jPanelMain.java</emphasis>,
+                    <emphasis>jPanelSurvey.java</emphasis>, <emphasis>jPanelQuestion.java</emphasis>.
+                    They provide 
+                </para>
+            </section>
+            <section xml:id="java-questionpanel">
+                <title>jPanelQuestion.java</title>
+                <para>
+                    This class is used for listing, creating and editing of 
+                    answers of selected Question. Question's text can be changed 
+                    here aswell.
+                </para>
+            </section>
+            <section xml:id="user-interface">
+                <title>User Interface</title>
+                <para>
+                    After launching application you can see already existing surveys 
+                    and you can choose one to edit it or create brand new one. After choosing survey next window 
+                    is opened in which user chooses from Questions of that which one
+                    to edit or create a new one. Survey's title and description can 
+                    changed here. Next window shows that question's answers and type
+                    of question. Answers can be created or edited here.
+                </para>
+            </section>
+        </section>
+    </section>
+</article>
