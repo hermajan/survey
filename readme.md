@@ -6,5 +6,5 @@ This is application for creating, editing and answering questionnaires.
 
 It is divided into parts:
 * [XML database](https://github.com/hermajan/survey/wiki/XML-database) with questions and responses
-* [application](https://github.com/hermajan/survey/wiki/Java-application) and its [desktop interface](https://github.com/hermajan/survey/wiki/Desktop-Interface) for creating and editing questions
+* [desktop interface](https://github.com/hermajan/survey/wiki/Desktop-Interface) for creating and editing questions
 * [web interface](https://github.com/hermajan/survey/wiki/Web-interface) for rendering and answering questions
