@@ -1,6 +1,6 @@
-package pokus2.backend;
+package survey.backend;
 
-import pokus2.backend.entities.Question;
+import survey.backend.entities.Question;
 import java.io.File;
 import java.io.IOException;
 import static java.lang.Integer.max;
@@ -23,8 +23,8 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-import pokus2.backend.entities.QuestionType;
-import pokus2.backend.entities.Survey;
+import survey.backend.entities.QuestionType;
+import survey.backend.entities.Survey;
 
 
 /**
