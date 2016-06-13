@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import survey.backend.SurveyEngine;
 import survey.backend.SurveyEngineException;
@@ -80,6 +81,7 @@ public class jPanelSurvey extends javax.swing.JPanel {
         jTableQuestions = new javax.swing.JTable();
         jLabelQuestions = new javax.swing.JLabel();
         jButtonEditQuestion = new javax.swing.JButton();
+        jButtonBack = new javax.swing.JButton();
 
         jButtonSaveSurvey.setText("Save survey");
         jButtonSaveSurvey.addActionListener(new java.awt.event.ActionListener() {
@@ -111,34 +113,41 @@ public class jPanelSurvey extends javax.swing.JPanel {
             }
         });
 
+        jButtonBack.setText("Back");
+        jButtonBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBackActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelSurveyTitle)
-                            .addComponent(jLabelDescription)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jTextFieldTitle, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addGap(1, 1, 1)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGap(121, 121, 121)
-                                            .addComponent(jButtonEditQuestion)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jButtonSaveSurvey, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelSurveyTitle)
+                    .addComponent(jLabelDescription)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jTextFieldTitle, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGap(1, 1, 1)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabelQuestions)
+                                    .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabelQuestions))
-                                        .addComponent(jTextFieldDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButtonAddQuestion)))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(131, 131, 131)
+                                                .addComponent(jButtonEditQuestion))
+                                            .addComponent(jButtonAddQuestion))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jButtonBack, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jButtonSaveSurvey, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jTextFieldDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -156,21 +165,22 @@ public class jPanelSurvey extends javax.swing.JPanel {
                 .addComponent(jLabelQuestions)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonSaveSurvey)
                     .addComponent(jButtonAddQuestion)
-                    .addComponent(jButtonEditQuestion))
-                .addContainerGap())
+                    .addComponent(jButtonEditQuestion)
+                    .addComponent(jButtonBack))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonAddQuestionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddQuestionActionPerformed
-        JFrame newFrame = new JFrame("Add question");
+    private void questionEditorInit(JPanel panel, String frameName){
+         JFrame newFrame = new JFrame(frameName);
 		newFrame.setIconImage(new ImageIcon("src/web/favicon.png").getImage());
         newFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         newFrame.setLayout(new BorderLayout());
-        newFrame.add(new jPanelQuestion(survey, new Question(-1, "", QuestionType.CLOSED)), BorderLayout.CENTER);
+        newFrame.add(panel, BorderLayout.CENTER);
         JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
         newFrame.setLocation(topFrame.getX(),topFrame.getY());
         newFrame.addWindowListener(new WindowAdapter() {
@@ -183,52 +193,51 @@ public class jPanelSurvey extends javax.swing.JPanel {
         topFrame.setEnabled(false);
         newFrame.pack();
         newFrame.setVisible(true);
+    }
+    
+    private void jButtonAddQuestionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddQuestionActionPerformed
+        questionEditorInit(new jPanelQuestion(survey, new Question(-1, "", QuestionType.CLOSED)), "Add question");
     }//GEN-LAST:event_jButtonAddQuestionActionPerformed
-
-    private void jButtonSaveSurveyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveSurveyActionPerformed
-        survey.setDescription(jTextFieldDescription.getText());
-        survey.setTitle(jTextFieldTitle.getText());
-        try {
-            se.saveSurvey(survey);
-        } catch (SurveyEngineException ex) {
-             JOptionPane.showMessageDialog(this, ex.getMessage(), "Error",
-                                    JOptionPane.ERROR_MESSAGE);
-        }
-        
-        JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(this);        
-        topFrame.dispose();
-    }//GEN-LAST:event_jButtonSaveSurveyActionPerformed
 
     private void jButtonEditQuestionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditQuestionActionPerformed
         try {    
             QuestionTableModel model = (QuestionTableModel) jTableQuestions.getModel();
             Question q = model.getQuestionOnRow(jTableQuestions.getSelectedRow());
-            JFrame newFrame = new JFrame("Edit question");
-			newFrame.setIconImage(new ImageIcon("src/web/favicon.png").getImage());
-            newFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            newFrame.setLayout(new BorderLayout());
-            newFrame.add(new jPanelQuestion(survey, q), BorderLayout.CENTER);
-            JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
-            newFrame.setLocation(topFrame.getX(),topFrame.getY());
-            newFrame.addWindowListener(new WindowAdapter() {
-                @Override
-                public void windowClosed(WindowEvent e) {
-                    updateTable();
-                    topFrame.setEnabled(true);
-                }
-            });
-            topFrame.setEnabled(false);
-            newFrame.pack();
-            newFrame.setVisible(true);
+            questionEditorInit(new jPanelQuestion(survey, q), "Edit question");
         }catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Please select question first!", "Error",
-                                    JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Please select question first!", "Error",JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButtonEditQuestionActionPerformed
+
+    private void jButtonSaveSurveyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveSurveyActionPerformed
+         
+        survey.setDescription(jTextFieldDescription.getText());
+        survey.setTitle(jTextFieldTitle.getText());
+        
+        boolean success = false;
+        
+        try {
+            se.saveSurvey(survey);
+            success = true;
+        } catch (SurveyEngineException ex) {
+             JOptionPane.showMessageDialog(this, ex.getMessage(), "Error",JOptionPane.ERROR_MESSAGE);
+        } finally {
+            if (success){
+                JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(this);        
+                topFrame.dispose();
+            }
+        }
+    }//GEN-LAST:event_jButtonSaveSurveyActionPerformed
+
+    private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
+        JFrame thisFrame = (JFrame)this.getRootPane().getParent();
+        thisFrame.dispose();
+    }//GEN-LAST:event_jButtonBackActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAddQuestion;
+    private javax.swing.JButton jButtonBack;
     private javax.swing.JButton jButtonEditQuestion;
     private javax.swing.JButton jButtonSaveSurvey;
     private javax.swing.JLabel jLabelDescription;

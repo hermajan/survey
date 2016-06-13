@@ -5,6 +5,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import survey.backend.SurveyEngine;
 import survey.backend.SurveyEngineException;
 import survey.frontend.panels.jPanelMain;
@@ -12,6 +14,14 @@ import survey.frontend.panels.jPanelMain;
 
 public class Main {
     public static void main(String[] args) {
+        
+        try {
+            UIManager.setLookAndFeel(
+                    UIManager.getCrossPlatformLookAndFeelClassName());
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            System.exit(-1);
+        }
         
         SurveyEngine surveyEngine = null;
         

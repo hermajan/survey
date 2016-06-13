@@ -23,7 +23,7 @@ public class Question {
     public void addAnswer(int aid, String text) {
         answers.put(aid, text);
     }
-    
+     
     public Set<Integer> getAnswerIDs() {
         return answers.keySet();
     }

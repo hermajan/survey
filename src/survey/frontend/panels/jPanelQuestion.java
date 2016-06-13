@@ -80,6 +80,8 @@ public class jPanelQuestion extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jRadioButtonMultiple = new javax.swing.JRadioButton();
         jRadioButtonClosed = new javax.swing.JRadioButton();
+        jButtonEditAnswer = new javax.swing.JButton();
+        jButtonBack = new javax.swing.JButton();
 
         jButtonAddAnswer.setText("Add answer");
         jButtonAddAnswer.addActionListener(new java.awt.event.ActionListener() {
@@ -102,17 +104,21 @@ public class jPanelQuestion extends javax.swing.JPanel {
 
         buttonGroup1.add(jRadioButtonMultiple);
         jRadioButtonMultiple.setText("MULTIPLE");
-        jRadioButtonMultiple.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButtonMultipleActionPerformed(evt);
-            }
-        });
 
         buttonGroup1.add(jRadioButtonClosed);
         jRadioButtonClosed.setText("CLOSED");
-        jRadioButtonClosed.addActionListener(new java.awt.event.ActionListener() {
+
+        jButtonEditAnswer.setText("Edit answer");
+        jButtonEditAnswer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButtonClosedActionPerformed(evt);
+                jButtonEditAnswerActionPerformed(evt);
+            }
+        });
+
+        jButtonBack.setText("Back");
+        jButtonBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBackActionPerformed(evt);
             }
         });
 
@@ -120,49 +126,56 @@ public class jPanelQuestion extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButtonAddAnswer)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonEditAnswer)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonSaveQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextFieldDescription)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 290, Short.MAX_VALUE))
+                                .addGap(15, 406, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                .addGap(31, 31, 31)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRadioButtonMultiple)
-                            .addComponent(jRadioButtonClosed)
-                            .addComponent(jButtonAddAnswer)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTextFieldDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jRadioButtonClosed)
+                                            .addComponent(jRadioButtonMultiple))
+                                        .addGap(34, 34, 34))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(54, 54, 54)
+                                        .addComponent(jButtonBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonAddAnswer)
-                    .addComponent(jLabel1))
+                .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                        .addComponent(jButtonSaveQuestion))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jRadioButtonClosed)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jRadioButtonMultiple)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
+                        .addComponent(jButtonBack))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonSaveQuestion)
+                    .addComponent(jButtonAddAnswer)
+                    .addComponent(jButtonEditAnswer))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -214,26 +227,58 @@ public class jPanelQuestion extends javax.swing.JPanel {
                 model.fireTableDataChanged();
                 questionCount += 1;
                 updateTable();
-            }
-        } else {
-			  System.out.println("Cancelled adding of answer.");
+            }     
         }
-		
         topFrame.setEnabled(true);
     }//GEN-LAST:event_jButtonAddAnswerActionPerformed
 
-    private void jRadioButtonClosedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonClosedActionPerformed
+    private void jButtonEditAnswerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditAnswerActionPerformed
+        boolean success = false;
+        AnswersTableModel model = (AnswersTableModel) jTableAnswers.getModel();
+        int aid = 0;
+        
+        try{
+            aid = model.getAnswerIdOnRow(jTableAnswers.getSelectedRow());
+            success = true;
+        }catch(ArrayIndexOutOfBoundsException e){
+            JOptionPane.showMessageDialog(this, "Please select answer!", "Error", JOptionPane.ERROR_MESSAGE);   
+        }
+        
+        if(success){
+            JTextField field1 = new JTextField();
+            field1.setText(question.getAnswer(aid));
+            JPanel panel = new JPanel(new GridLayout(0, 1));
+            JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
+            panel.add(new JLabel("Answer"));
+            panel.add(field1);   
+            topFrame.setEnabled(false);
+            int result = JOptionPane.showConfirmDialog(this, panel, "Add Answer",
+                JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+            if (result == JOptionPane.OK_OPTION) {
+                if(field1.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(this, "Empty answer!", "Error",JOptionPane.ERROR_MESSAGE);
+                }else{
+                    question.addAnswer(aid, field1.getText());                
+                    model.addAnswerToTable(questionCount, field1.getText());
+                    model.fireTableDataChanged();
+                    updateTable();
+                }
+            }
+            topFrame.setEnabled(true);
+        }
+    }//GEN-LAST:event_jButtonEditAnswerActionPerformed
 
-    }//GEN-LAST:event_jRadioButtonClosedActionPerformed
-
-    private void jRadioButtonMultipleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMultipleActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButtonMultipleActionPerformed
+    private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
+        JFrame thisFrame = (JFrame)this.getRootPane().getParent();
+        thisFrame.dispose();
+    }//GEN-LAST:event_jButtonBackActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButtonAddAnswer;
+    private javax.swing.JButton jButtonBack;
+    private javax.swing.JButton jButtonEditAnswer;
     private javax.swing.JButton jButtonSaveQuestion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JRadioButton jRadioButtonClosed;

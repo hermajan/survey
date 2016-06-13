@@ -13,13 +13,12 @@ import javax.swing.table.AbstractTableModel;
 public class AnswersTableModel extends AbstractTableModel{
     class Answer{
         private final int aid;
-        private final String answer;
+        private String answer;
 
         public Answer(int aid, String answer) {
             this.aid = aid;
             this.answer = answer;
         }
- 
     }
     
     private final List<Answer> answers = new ArrayList<>();
@@ -63,13 +62,22 @@ public class AnswersTableModel extends AbstractTableModel{
     }
     
     public void addAnswerToTable(int aid, String answer){
-        answers.add(new Answer(aid, answer));
+        Answer newAnswer = new Answer(aid, answer);
+        
+        for(int i = 0; i < answers.size(); i++){
+            Answer a = answers.get(i);
+            if(a.aid == aid){
+                a.answer = answer;
+                return;
+            }
+        }
+        answers.add(newAnswer);
         fireTableCellUpdated(answers.size(), getColumnCount());
     }
     
-    public String getAnswerStringOnRow(int rowIndex){
+    public int getAnswerIdOnRow(int rowIndex){
         Answer answer = answers.get(rowIndex);
-        return answer.answer;
+        return answer.aid;
     }
 
     @Override
