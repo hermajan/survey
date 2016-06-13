@@ -4,9 +4,9 @@
   <info>
     <title></title>
   </info>
-<section id="survey">
+<section xml:id="survey">
   <title>Survey</title>
-  <section id="jan-hermann">
+  <section xml:id="jan-hermann">
     <title>Jan Hermann</title>
     <para>
       In this project named Survey I led the team and also I was
@@ -15,7 +15,7 @@
       They are <emphasis>Response.java</emphasis> and
       <emphasis>XMLmanagement.java</emphasis>.
     </para>
-    <section id="leading">
+    <section xml:id="leading">
       <title>Leading</title>
       <para>
         As a leader I created the repository for the source code, web
@@ -28,7 +28,7 @@
         room about problems and ideas for the project.
       </para>
     </section>
-    <section id="web-interface">
+    <section xml:id="web-interface">
       <title>Web interface</title>
       <para>
         Web interface is used primarily for answering questions from
@@ -55,7 +55,7 @@
         scriptlet.
       </para>
     </section>
-    <section id="response.java">
+    <section xml:id="response.java">
       <title>Response.java</title>
       <para>
         This class creates XML document for storing responses. Questions
@@ -63,7 +63,7 @@
         XML document with response.
       </para>
     </section>
-    <section id="xmlmanagement.java">
+    <section xml:id="xmlmanagement.java">
       <title>XMLmanagement.java</title>
       <para>
         This class is used for easier importing and exporting XML
