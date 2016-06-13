@@ -6,13 +6,20 @@ import java.util.Map;
 import javax.swing.table.AbstractTableModel;
 import survey.backend.entities.Survey;
  
-
+/**
+ * 
+ * @author Jakub Gavlas
+ */
 public class SurveyTableModel extends AbstractTableModel{
     private final List<Survey> surveys = new ArrayList<>();
  
     public SurveyTableModel() {
     }
     
+    /**
+     * Reloads Surveys in table
+     * @param surveys Surveys to be recreated
+     */
     public void recreateSurveys(Map<Integer,String> surveys){
         this.surveys.clear();
         surveys.entrySet().stream().forEach((entry) -> {
@@ -57,17 +64,16 @@ public class SurveyTableModel extends AbstractTableModel{
                 throw new IllegalArgumentException("columnIndex");
         }
     }
-   
+    /**
+    * Returns Survey on index rowIndex
+    * @param rowIndex Index of table row
+    * @return Survey on row
+    */
     public Survey getSurveyOnRow(int rowIndex){
         Survey survey = surveys.get(rowIndex);
         return survey;
     }
-   
-    public void addSurveyToTable(Survey survey){
-        surveys.add(survey);
-        fireTableCellUpdated(surveys.size(), getColumnCount());
-    }
- 
+    
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
         switch (columnIndex) {

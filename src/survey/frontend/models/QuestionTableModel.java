@@ -5,7 +5,10 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 import survey.backend.entities.Question;
  
-
+/**
+ * 
+ * @author Jakub Gavlas
+ */
 public class QuestionTableModel extends AbstractTableModel{
     private List<Question> questions = new ArrayList<>();
  
@@ -47,14 +50,14 @@ public class QuestionTableModel extends AbstractTableModel{
         }
     }
     
+    /**
+     * Return Question on index rowIndex
+     * @param rowIndex Index of table row
+     * @return Question on row
+     */
     public Question getQuestionOnRow(int rowIndex){
         Question question = questions.get(rowIndex);
         return question;
-    }
-    
-    public void addQuestionToTable(Question question){
-        questions.add(question);
-        fireTableCellUpdated(question.getAnswerSize(), question.getAnswerSize());
     }
  
     @Override
@@ -69,10 +72,13 @@ public class QuestionTableModel extends AbstractTableModel{
         }
     }
     
+    /**
+     * Reloads Questions in table
+     * @param questions Questions to be recreated
+     */
     public void recreateQuestions(List<Question> questions){
         this.questions = questions;     
         fireTableCellUpdated(questions.size(), getColumnCount());
     }
     
-   
 }

@@ -8,9 +8,13 @@ import javax.swing.table.AbstractTableModel;
 
 /**
  *
- * @author peteru
+ * @author Peter Petkanič
  */
 public class AnswersTableModel extends AbstractTableModel{
+    
+    /**
+     * Representing Answer(id, string) in Survey
+     */
     class Answer{
         private final int aid;
         private String answer;
@@ -61,6 +65,11 @@ public class AnswersTableModel extends AbstractTableModel{
         }
     }
     
+    /**
+     * Adds Answer to table, if Answer already exist, update it
+     * @param aid ID of Answer
+     * @param answer Text of Answer
+     */
     public void addAnswerToTable(int aid, String answer){
         Answer newAnswer = new Answer(aid, answer);
         
@@ -75,6 +84,11 @@ public class AnswersTableModel extends AbstractTableModel{
         fireTableCellUpdated(answers.size(), getColumnCount());
     }
     
+    /**
+     * Returns Answer on index rowIndex
+     * @param rowIndex Index of table row
+     * @return Answer on row
+     */
     public int getAnswerIdOnRow(int rowIndex){
         Answer answer = answers.get(rowIndex);
         return answer.aid;
@@ -91,7 +105,11 @@ public class AnswersTableModel extends AbstractTableModel{
         }
     }
     
-    public void recreateQuestions(HashMap<Integer,String> answers){
+    /**
+     * Reloads Answers in table
+     * @param answers Answers to be recreated
+     */
+    public void recreateAnswers(HashMap<Integer,String> answers){
         this.answers.clear();
         
         for (Map.Entry<Integer, String> entry : answers.entrySet()) {
