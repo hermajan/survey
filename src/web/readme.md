@@ -9,6 +9,9 @@ Web version of Survey is runnable only through [Apache Tomcat](https://tomcat.ap
 * Start the Tomcat server with script:
 	* `bin/startup.sh` (on Linux)
 	* `bin/startup.bat` (on Windows)
+* In `content.js` is an option which implementation is used for processing answers on the server:
+	* <attr title="JavaServer Pages">JSP</attr>: set variable `implementation` to `jsp`
+	* <attr title="PHP: Hypertext Preprocessor">PHP</attr>: set variable `implementation` to `php`
 * Open the `index.html` file in the browser with URL of your server.
 
 Also web interface runs on [https://hermajan.net/survey/index.html](https://hermajan.net/survey/index.html).

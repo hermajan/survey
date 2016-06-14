@@ -1,4 +1,10 @@
 /**
+ * Implementation of the server for the web interface.
+ * @type String "jsp" or "php"
+ */
+var implementation = "php";
+
+/**
  * Highlights current page in menu.
  */
 function activeLinks() {
@@ -74,7 +80,9 @@ function doAjax(callback, url, responseType) {
 }
 doAjax(changeContent, "survey.xml", "xml");
 window.addEventListener("hashchange", function() { doAjax(changeContent, "survey.xml", "xml"); });
-doAjax(getResponse, "scriptlet.jsp"+window.location.search, "text");
+if(getParameters().length > 0) {
+	doAjax(getResponse, "scriptlet."+implementation+window.location.search, "text");
+}
 
 /**
  * Changes content on page.

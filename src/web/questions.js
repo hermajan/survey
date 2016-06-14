@@ -1,3 +1,5 @@
+/* global implementation, getResponse */
+
 /**
  * Renders form with questions.
  * @param {xml} xml XML data.
@@ -17,11 +19,11 @@ function renderQuestions(xml, id) {
 	element.appendChild(p);
 	
 	var form = document.createElement("form");
-	//form.action = "scriptlet.jsp";
+	//form.action = "scriptlet."+implementation;
 	form.method = "get";
 	form.name = "qForm";
 	form.addEventListener("submit", function() {
-		doAjax(getResponse, "scriptlet.jsp"+window.location.search, "text");
+		doAjax(getResponse, "scriptlet."+implementation+window.location.search, "text");
 	});
 	
 	var questions = survey.getElementsByTagName("question");
@@ -40,7 +42,7 @@ function renderQuestions(xml, id) {
 	button.className = "btn btn-primary";
 	//button.type = "submit";
 	button.addEventListener("click", function(){
-		doAjax(getResponse, "scriptlet.jsp"+window.location.search, "text");
+		doAjax(getResponse, "scriptlet."+implementation+window.location.search, "text");
 	});
 	button.innerHTML = "Submit";
 	
