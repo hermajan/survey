@@ -73,7 +73,7 @@ public class XMLmanagementTest extends TestCase {
 		System.out.println("importing");
 		
 		XMLmanagement xman = new XMLmanagement();
-		xman.importing("response.xml");
+		xman.importing("src/xml/response.xml");
 		
 		System.out.println(xman.restringing());
 	}

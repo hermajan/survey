@@ -6,7 +6,7 @@ import javax.swing.table.AbstractTableModel;
 import survey.backend.entities.Question;
  
 /**
- * 
+ *
  * @author Jakub Gavlas
  */
 public class QuestionTableModel extends AbstractTableModel{

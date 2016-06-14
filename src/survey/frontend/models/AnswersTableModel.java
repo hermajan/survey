@@ -8,7 +8,7 @@ import javax.swing.table.AbstractTableModel;
 
 /**
  *
- * @author Peter Petkanič
+ * @author Jakub Gavlas
  */
 public class AnswersTableModel extends AbstractTableModel{
     

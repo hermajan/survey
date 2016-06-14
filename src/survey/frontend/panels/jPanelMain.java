@@ -10,12 +10,12 @@ import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.table.TableColumn;
 import survey.backend.SurveyEngine;
-import survey.backend.SurveyEngineException;
 import survey.backend.entities.Survey;
 import survey.frontend.models.SurveyTableModel;
 
 /**
- * @author Peter Petkanič/433422
+ *
+ * @author Peter Petkanič
  */
 public class jPanelMain extends javax.swing.JPanel {
 

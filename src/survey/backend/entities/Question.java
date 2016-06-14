@@ -3,6 +3,10 @@ package survey.backend.entities;
 import java.util.HashMap;
 import java.util.Set;
 
+/**
+ * Class Question represents question of survey
+ * @author Peter Petkanic
+ */
 public class Question {
         
     private int qid;
@@ -20,10 +24,19 @@ public class Question {
         return answers.size();
     }
     
+    /**
+     * Adds or updates answer
+     * @param aid ID of answer
+     * @param text answer string
+     */
     public void addAnswer(int aid, String text) {
         answers.put(aid, text);
     }
      
+    /**
+     * Returns Set of answer IDs of question
+     * @return set of answer IDs
+     */
     public Set<Integer> getAnswerIDs() {
         return answers.keySet();
     }

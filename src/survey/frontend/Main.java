@@ -11,7 +11,10 @@ import survey.backend.SurveyEngine;
 import survey.backend.SurveyEngineException;
 import survey.frontend.panels.jPanelMain;
 
-
+/**
+ * Main class
+ * @author Peter Petkanič
+ */
 public class Main {
     public static void main(String[] args) {
         

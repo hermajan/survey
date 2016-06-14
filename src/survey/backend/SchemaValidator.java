@@ -20,6 +20,7 @@ import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 
 /**
+ * Class SchemaValidator represents set of functions for xml files validation
  * @author Peter Petkanic
  */
 public class SchemaValidator {
@@ -27,6 +28,12 @@ public class SchemaValidator {
     private DocumentBuilder docBuilder;
     private String error;
 
+    /**
+     * Initializes schema validator
+     * @param schemaName path to xml schema
+     * @throws SAXException
+     * @throws ParserConfigurationException 
+     */
     public SchemaValidator(String schemaName) throws SAXException, ParserConfigurationException{
         try {
             SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
